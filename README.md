@@ -17,13 +17,14 @@ votersguide.co - A website that focuses on making voters' choices accessible by 
 Examples:
 https://votersedge.org/ca
 https://developers.google.com/civic-information/docs/v2/elections/voterInfoQuery
+https://ballotpedia.org/California_2018_ballot_propositions
 
 ## To-do list
 
 ### v0
 - [x] Wireframes
 - [x] Conceptualize DB Model
-- [ ] Set up node app
+- [x] Set up node app
 - [ ] Basic front-end
 - [ ] Set up a DB with SF Voting Options
 - [ ] Set up authentication
