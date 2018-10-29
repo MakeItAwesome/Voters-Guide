@@ -1,2 +1,9 @@
 <h1>Admin Dashboard</h1>
 <a href="admin/props/new">Create new Proposition</a>
+{{#each props as |prop|}}
+    <ul>
+        <li>
+            {{prop.name}} (<a href="">Edit</a>)
+        </li>
+    </ul>
+{{/each}}

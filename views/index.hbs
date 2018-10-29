@@ -1,15 +1,55 @@
 <h1>Voter's Guide</h1>
-<p>An easy way to understand your choices</p>
-{{#each props as |prop|}}
-    <ul>
-        <li>
-            {{prop.id}}
-        </li>
-        <li>
-            {{prop.name}}
-        </li>
-        <li>
-            {{prop.pros}}
-        </li>
-    </ul>
-{{/each}}
+<p>People are busy. People often don't vote for propositions
+  because they don't know what they're about. We've synthesized
+  the important information below.</p>
+
+<div class="all-props-container">
+
+  <div class="card-deck">
+
+    {{#each props as |prop|}}
+
+      <div class="prop-title">
+        <h3>{{prop.name}}</h3>
+        <a href="{{prop.readMoreUrl}}" target="_blank">Read More</a>
+      </div>
+
+      <div class="pros-and-cons-container">
+
+        <div class="card text-white bg-success mb-3">
+          <div class="card-header">Pros</div>
+          <div class="card-body">
+            {{#each prop.pros as |pro|}}
+              <ul>
+                {{#if pro}} <!-- check that the "pro" array item is not empty before rendering -->
+                  <li>
+                    {{pro}}
+                  </li>
+                {{/if}}
+              </ul>
+            {{/each}}
+          </div>
+        </div> <!-- pros card container -->
+
+        <div class="card text-white bg-danger mb-3">
+          <div class="card-header">Cons</div>
+          <div class="card-body">
+            {{#each prop.cons as |con|}}
+              <ul>
+                {{#if con}}  <!-- check that the "con" array item is not empty before rendering -->
+                  <li>
+                    {{con}}
+                  </li>
+                {{/if}}
+              </ul>
+            {{/each}}
+          </div>
+        </div> <!-- cons card container -->
+
+      </div> <!-- pros and cons container -->
+
+    {{/each}}
+
+  </div> <!-- card deck container -->
+
+</div> <!-- all props -->
