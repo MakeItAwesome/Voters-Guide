@@ -5,7 +5,13 @@ const Proposition = require('../models/proposition');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Voters Guide' });
+  Proposition.find({}, function(err, props) {
+    if (err) {
+      console.error(err);
+    } else {
+      res.render('index', { title: 'Voters Guide', props: props });
+    }
+  })
 });
 
 /* GET admin page. */

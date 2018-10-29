@@ -1,2 +1,15 @@
 <h1>Voter's Guide</h1>
 <p>An easy way to understand your choices</p>
+{{#each props as |prop|}}
+    <ul>
+        <li>
+            {{prop.id}}
+        </li>
+        <li>
+            {{prop.name}}
+        </li>
+        <li>
+            {{prop.pros}}
+        </li>
+    </ul>
+{{/each}}
