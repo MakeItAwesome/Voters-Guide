@@ -8,7 +8,8 @@ const PropositionSchema = new Schema({
   cons: { type: Array },
   arrayOfYesVoters: { type: Array },
   arrayOfNoVoters: { type: Array  },
-  readMoreUrl: { type: String }
+  readMoreUrl: { type: String },
+  area: { type: String }
 });
 
 const Proposition = mongoose.model('Proposition', PropositionSchema);

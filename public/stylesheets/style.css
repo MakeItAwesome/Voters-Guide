@@ -1,8 +1,21 @@
 body {
   /* padding: 50px; */
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
-  color: #00B7FF; }
+  color: #00B7FF;
+}
+
+.container {
+  margin-top:2em;
+}
+
+.pros-and-cons-container {
+  display:flex;
+}
+
+.prop-title {
+  
+}
 
 /*# sourceMappingURL=style.css.map */

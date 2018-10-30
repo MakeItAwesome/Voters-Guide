@@ -16,7 +16,14 @@ router.get('/', function(req, res, next) {
 
 /* GET admin page. */
 router.get('/admin', function(req, res, next) {
-  res.render('admin');
+  Proposition.find({}, function(err, props) {
+    if (err) {
+      console.error(err);
+    } else {
+      res.render('admin', { props: props });
+    }
+  })
+
 });
 
 /* GET NEW prop form. */
