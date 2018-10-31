@@ -1,29 +1,44 @@
 @import "variables.scss";
+
+$black: #1C1C1C;
+$light-grey: #636e72;
+$mid-grey: #cac9c8;
+$dark-grey: #F5F5F5;
+
+a {
+  color: $dark-grey;
+}
+
 body {
-  background-color: #8A8A8A;
+  font-family: 'IBM Plex Sans', sans-serif;
+  background-color: $mid-grey;
   nav {
-    background-color: #1C1C1C;
+    background-color: $black;
     .navbar-brand a {
       font-weight: 800;
-      color: #F5F5F5;
       letter-spacing: 1.5px;
+    }
+    .navbar-nav a {
+      color: $dark-grey;
+    }
+    a:hover, .navbar-nav a:hover {
+      color: $mid-grey;
     }
   }
   .container {
     padding: 0px;
+    margin-top:2em;
     .top {
-      margin-top: 1.2em;
       text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       h1,p {
-        color: #1C1C1C;
-        font-family: 'IBM Plex Sans', sans-serif;
+        color: $black;
       }
       h1 {
-        font-size: 2.2em;
+        font-size: 3em;
         font-weight: 800;
       }
       p {
@@ -31,23 +46,32 @@ body {
         font-size: 0.93rem;
         margin-bottom: .8rem;
       }
-      button {
-        font-family: 'IBM Plex Sans', sans-serif;
-        background-color: #1C1C1C;
-        color: #F5F5F5;
+      .signup-btn {
+        background-color: $black;
+        color: $dark-grey;
         border: none;
         margin-bottom: 1.2rem;
         letter-spacing: 1px;
         padding: 4px 20px;
       }
+      .signup-btn:hover {
+        color: $mid-grey;
+      }
     }
     .all-props-container {
+      max-width: 960px; // so cards don't get different widths
+      margin-left: auto; // to center
+      margin-right: auto; // to center
       .card-deck {
+        justify-content: center;
         .prop-title {
-          font-family: 'IBM Plex Sans', sans-serif;
-          color: #1C1C1C;
+          color: $black;
           text-align: center;
           width: 100%;
+          display: flex;
+          align-items: center;
+          margin-top:1em;
+          margin-bottom:0.5em;
           // Proposition Header
           h3 {
             font-size: 1.0em;
@@ -58,6 +82,8 @@ body {
           }
           // Read More
           a { font-size: .9em; }
+          .source-link { color: $light-grey; }
+          .source-link:hover { color: white; }
         }
         .pros-and-cons-container {
           display:flex;
@@ -66,7 +92,6 @@ body {
             width: calc(280px * 2);
             display: flex;
             .card {
-              font-family: 'IBM Plex Sans', sans-serif;
               width: 280px;
               box-shadow: 0 2px 9px 0 rgba(0,0,0,.3);
               .card-header {
@@ -82,9 +107,9 @@ body {
               }
             }
             .card.card__pros {
-              border: 4px solid #0D56D9;
+              border: 2px solid $light-grey;
               .card-header {
-                text-align: right;
+                text-align: center;
                 padding-right: 1em;
               }
               .card-body {
@@ -93,9 +118,9 @@ body {
               }
             }
             .card.card__cons {
-              border: 4px solid #FF0000;
+              border: 2px solid $light-grey;
               .card-header {
-                text-align: left;
+                text-align: center;
                 padding-left: 1em;
               }
               .card-body {
@@ -104,6 +129,16 @@ body {
               }
             }
           }
+          .save-vote {
+            text-align: center;
+            background-color: $black;
+            color:white;
+          }
+          .save-vote:hover {
+            background-color: white;
+            color: $black;
+          }
+
         }
       }
     }

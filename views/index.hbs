@@ -1,73 +1,9 @@
 <div class="top">
-  <h1>Voter's Guide</h1>
+  <h1>{{title}}</h1>
   <p>People are busy. People often don't vote for propositions
     because they don't know what they're about. We've synthesized
     the important information below.</p>
-  <button class="signup-btn">Signup</button>
+  <a href="/signup"><button class="signup-btn">Signup</button></a>
 </div>
-<div class="all-props-container">
 
-  <div class="card-deck">
-
-    {{#each props as |prop|}}
-
-      <div class="prop-title">
-        <h3>{{prop.name}}</h3>
-        <a href="{{prop.readMoreUrl}}" target="_blank">Read More</a>
-      </div>
-
-      <div class="pros-and-cons-container">
-
-        <div class="card-container">
-
-          <div class="card card__pros mb-3">
-            <div class="card-header">People <strong>FOR</strong> say</div>
-            <div class="card-body">
-              {{#each prop.pros as |pro|}}
-                <ul>
-                  {{#if pro}} <!-- check that the "pro" array item is not empty before rendering -->
-                    <li><span>
-                      {{pro}}
-                    </span></li>
-                  {{/if}}
-                </ul>
-              {{/each}}
-            </div>
-          </div> <!-- pros card container -->
-
-          <div class="card card__cons mb-3">
-            <div class="card-header">People <strong>AGAINST</strong> say</div>
-            <div class="card-body">
-              {{#each prop.cons as |con|}}
-                <ul>
-                  {{#if con}}  <!-- check that the "con" array item is not empty before rendering -->
-                    <li>
-                      {{con}}
-                    </li>
-                  {{/if}}
-                </ul>
-              {{/each}}
-            </div>
-          </div> <!-- cons card container -->
-        </div>
-
-      </div> <!-- pros and cons container -->
-
-    {{/each}}
-
-  </div> <!-- card deck container -->
-
-</div> <!-- all props -->
-
-<script type="text/javascript">
-  // Grab width of window and card container
-  const windowWidth = $(window).width();
-  const cardContainerWidth = $('.card-container').width();
-  // start the horizontal scroll in the middle
-  $(".pros-and-cons-container").scrollLeft( (cardContainerWidth - windowWidth) / 2);
-  console.log($(".pros-and-cons-container").scrollLeft());
-
-  $(".pros-and-cons-container").scroll(function(e) {
-    console.log($(this).scrollLeft());
-  });
-</script>
+{{> props}}
