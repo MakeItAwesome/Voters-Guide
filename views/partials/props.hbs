@@ -1,0 +1,58 @@
+<div class="all-props-container">
+
+  <div class="card-deck">
+
+    {{#each props as |prop|}}
+
+      <div class="prop-title">
+        <h3>{{prop.name}}</h3>
+        <a href="{{prop.readMoreUrl}}" target="_blank" class="source-link">(Source: votersedge.org)</a>
+      </div>
+
+      <div class="pros-and-cons-container">
+
+        <div class="card card__pros mb-3">
+          <div class="card-header">People <strong>FOR</strong> say</div>
+          <div class="card-body">
+            {{#each prop.pros as |pro|}}
+              <ul>
+                {{#if pro}} <!-- check that the "pro" array item is not empty before rendering -->
+                  <li><span>
+                    {{pro}}
+                  </span></li>
+                {{/if}}
+              </ul>
+            {{/each}}
+          </div>
+          <div class="card-footer save-vote">
+            Save Vote
+          </div>
+        </div> <!-- pros card container -->
+
+        <div class="card card__cons mb-3">
+          <div class="card-header">People <strong>AGAINST</strong> say</div>
+          <div class="card-body">
+            {{#each prop.cons as |con|}}
+              <ul>
+                {{#if con}}  <!-- check that the "con" array item is not empty before rendering -->
+                  <li>
+                    {{con}}
+                  </li>
+                {{/if}}
+              </ul>
+            {{/each}}
+          </div>
+          <a href="" class="save-vote-link">
+            <div class="card-footer save-vote">
+            Save Vote
+            </div>
+          </a>
+        </div> <!-- cons card container -->
+
+      </div> <!-- pros and cons container -->
+
+    {{/each}}
+
+  </div> <!-- card deck container -->
+
+</div> <!-- all props -->
