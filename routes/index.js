@@ -3,13 +3,23 @@ var router = express.Router();
 
 const Proposition = require('../models/proposition');
 
+// set layout variables
+router.use(function(req, res, next) {
+  // set website title
+  res.locals.title = "Voter's Guide";
+  // so we can check if user is logged in
+  res.locals.user = req.session.user;
+
+  next();
+});
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   Proposition.find({}, function(err, props) {
     if (err) {
       console.error(err);
     } else {
-      res.render('index', { title: 'Voters Guide', props: props });
+      res.render('index', { props: props });
     }
   })
 });
