@@ -47,6 +47,7 @@ body {
           font-family: 'IBM Plex Sans', sans-serif;
           color: #1C1C1C;
           text-align: center;
+          width: 100%;
           // Proposition Header
           h3 {
             font-size: 1.0em;
@@ -61,42 +62,46 @@ body {
         .pros-and-cons-container {
           display:flex;
           overflow-x: scroll;
-          .card {
-            font-family: 'IBM Plex Sans', sans-serif;
-            min-width: 280px;
-            box-shadow: 0 2px 9px 0 rgba(0,0,0,.3);
-            .card-header {
-              padding: .5rem .5rem;
-              font-size: .9em;
-            }
-            .card-body {
-              ul {
-                // less padding to left of bullet
-                padding: .1em .2em .1em 1.3em;
-                margin: 5px 0px 5px 0px;
+          .card-container {
+            width: calc(280px * 2);
+            display: flex;
+            .card {
+              font-family: 'IBM Plex Sans', sans-serif;
+              width: 280px;
+              box-shadow: 0 2px 9px 0 rgba(0,0,0,.3);
+              .card-header {
+                padding: .5rem .5rem;
+                font-size: .9em;
+              }
+              .card-body {
+                ul {
+                  // less padding to left of bullet
+                  padding: .1em .2em .1em 1.3em;
+                  margin: 5px 0px 5px 0px;
+                }
               }
             }
-          }
-          .card.card__pros {
-            border: 4px solid #0D56D9;
-            .card-header {
-              text-align: right;
-              padding-right: 1em;
+            .card.card__pros {
+              border: 4px solid #0D56D9;
+              .card-header {
+                text-align: right;
+                padding-right: 1em;
+              }
+              .card-body {
+                // no padding on the right side
+                padding: .25em .0em .25em .25em;
+              }
             }
-            .card-body {
-              // no padding on the right side
-              padding: .25em .0em .25em .25em;
-            }
-          }
-          .card.card__cons {
-            border: 4px solid #FF0000;
-            .card-header {
-              text-align: left;
-              padding-left: 1em;
-            }
-            .card-body {
-              // no padding on the left side
-              padding: .25em .25em .25em 0em;
+            .card.card__cons {
+              border: 4px solid #FF0000;
+              .card-header {
+                text-align: left;
+                padding-left: 1em;
+              }
+              .card-body {
+                // no padding on the left side
+                padding: .25em .25em .25em 0em;
+              }
             }
           }
         }
