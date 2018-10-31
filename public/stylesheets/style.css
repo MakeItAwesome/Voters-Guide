@@ -46,9 +46,11 @@ body {
       body .container .all-props-container .card-deck .prop-title a {
         font-size: .9em; }
     body .container .all-props-container .card-deck .pros-and-cons-container {
-      display: flex; }
+      display: flex;
+      overflow-x: scroll; }
       body .container .all-props-container .card-deck .pros-and-cons-container .card {
-        font-family: 'IBM Plex Sans', sans-serif; }
+        font-family: 'IBM Plex Sans', sans-serif;
+        min-width: 280px; }
         body .container .all-props-container .card-deck .pros-and-cons-container .card .card-header {
           padding: .5rem .5rem;
           font-size: .9em; }
