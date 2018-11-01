@@ -47,10 +47,11 @@ body {
       body .container .all-props-container .card-deck {
         justify-content: center; }
         body .container .all-props-container .card-deck .prop-title {
+          font-size: 1.2em;
           color: #1C1C1C;
           text-align: center;
           width: 100%;
-          display: flex;
+          display: block;
           align-items: center;
           margin-top: 1em;
           margin-bottom: 0.5em; }
@@ -84,14 +85,14 @@ body {
             body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__pros {
               border: 2px solid #636e72; }
               body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__pros .card-header {
-                text-align: center;
+                text-align: right;
                 padding-right: 1em; }
               body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__pros .card-body {
                 padding: .25em .0em .25em .25em; }
             body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__cons {
               border: 2px solid #636e72; }
               body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__cons .card-header {
-                text-align: center;
+                text-align: left;
                 padding-left: 1em; }
               body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__cons .card-body {
                 padding: .25em .25em .25em 0em; }
