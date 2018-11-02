@@ -20,11 +20,9 @@
                 </ul>
               {{/each}}
             </div>
-            {{@root.user.arrayOfYesVotes}}
-            {{prop.id}}
             {{#contains @root.user.arrayOfYesVotes prop.id}}
               <form action="/save-vote" method="post">
-                <input type="hidden" name="yesVote" class="form-control" id="user-array-of-yes-votes" value="{{prop.id}}">
+                <input type="hidden" name="undoYesVote" class="form-control" value="{{prop.id}}">
                 <button href="" class="save-vote-link" type="submit">
                   <div class="card-footer save-vote">
                     Undo Vote
@@ -33,7 +31,7 @@
               </form> <!-- undo yesVote form -->
             {{else}}
               <form action="/save-vote" method="post">
-                <input type="hidden" name="yesVote" class="form-control" id="user-array-of-yes-votes" value="{{prop.id}}">
+                <input type="hidden" name="yesVote" class="form-control" value="{{prop.id}}">
                 <button href="" class="save-vote-link" type="submit">
                   <div class="card-footer save-vote">
                     Save Vote
@@ -55,11 +53,9 @@
                 </ul>
               {{/each}}
             </div>
-            {{@root.user.arrayOfNoVotes}}
-            {{prop.id}}
             {{#contains @root.user.arrayOfNoVotes prop.id}}
               <form action="/save-vote" method="post">
-                <input type="hidden" name="noVote" class="form-control" id="user-array-of-no-votes" value="{{prop.id}}">
+                <input type="hidden" name="undoNoVote" class="form-control" value="{{prop.id}}">
                 <button href="" class="save-vote-link" type="submit">
                   <div class="card-footer save-vote">
                     Undo Vote
@@ -68,7 +64,7 @@
               </form> <!-- undo noVote form -->
             {{else}}
               <form action="/save-vote" method="post">
-                <input type="hidden" name="noVote" class="form-control" id="user-array-of-no-votes" value="{{prop.id}}">
+                <input type="hidden" name="noVote" class="form-control" value="{{prop.id}}">
                 <button href="" class="save-vote-link" type="submit">
                   <div class="card-footer save-vote">
                     Save Vote

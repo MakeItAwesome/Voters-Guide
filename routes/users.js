@@ -88,6 +88,38 @@ router.post('/save-vote', auth.requireLogin, function(req, res, next) {
         res.redirect('/');
       });
   }
+  else if (req.body.undoNoVote !== undefined) {
+    console.log('clicked undo no');
+    User.findByIdAndUpdate(
+      res.locals.user._id, {
+        $pull: {
+          arrayOfNoVotes: req.body.undoNoVote
+        }
+      },
+      function(err, event) {
+        if (err) {
+          console.error(err)
+        };
+        res.locals.user.arrayOfNoVotes.pop(req.body.undoNoVote); // so it updates on client side
+        res.redirect('/');
+      });
+  }
+  else if (req.body.undoYesVote !== undefined) {
+    console.log('clicked undo yes');
+    User.findByIdAndUpdate(
+      res.locals.user._id, {
+        $pull: {
+          arrayOfNoVotes: req.body.undoYesVote
+        }
+      },
+      function(err, event) {
+        if (err) {
+          console.error(err)
+        };
+        res.locals.user.arrayOfYesVotes.pop(req.body.undoYesVote); // so it updates on client side
+        res.redirect('/');
+      });
+  }
 
 
 
