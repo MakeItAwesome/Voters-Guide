@@ -15,7 +15,18 @@ const UserSchema = new Schema({
     required: true
   },
   name: {
-    type: String
+    type: String,
+    required: true
+  },
+  profilePublic: {
+    type: Boolean,
+    default: false
+  },
+  arrayOfYesVotes: {
+    type: Array
+  },
+  arrayOfNoVotes: {
+    type: Array
   }
 });
 
