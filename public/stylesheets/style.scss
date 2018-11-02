@@ -88,9 +88,12 @@ body {
         .pros-and-cons-container {
           display:flex;
           overflow-x: scroll;
+          width: 100%;
+          justify-content: center;
           .card-container {
             width: calc(280px * 2);
             display: flex;
+
             .card {
               width: 280px;
               box-shadow: 0 2px 9px 0 rgba(0,0,0,.3);
@@ -138,7 +141,13 @@ body {
             background-color: white;
             color: $black;
           }
-
+          .voting-panel {
+            // width:100%;
+            // display:flex;
+            // justify-content: center;
+            flex-flow: column !important;
+            // margin: auto;
+          }
         }
       }
     }
