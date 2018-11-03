@@ -38,15 +38,12 @@ UserSchema.pre('save', function(next) {
 
   // generate code name
   attempt = 1
+  let codeName = generateCodeName(user.name, attempt);
+  attempt += 1;
 
-  if (typeof codeName == 'undefined') {
-    let codeName = generateCodeName(user.name,attempt);
+  while (isUnique(codeName) == false) {
+    let codeName = generateCodeName(user.name, attempt);
     attempt += 1;
-  } else {
-    while (isUnique(codeName) == false) {
-      let codeName = generateCodeName(user.name,attempt);
-      attempt += 1;
-    }
   }
 
   if (isUnique(codeName) == true) {
@@ -84,14 +81,13 @@ UserSchema.statics.authenticate = function(email, password, next) {
 }
 
 function generateCodeName(name, count) {
-  let kabobName = name.split(' ').join('-').toLowerCase(); // replace spaces with dashes and converts to lower case
-  console.log(kabobName);
+  let kabobName = name.split(' ').join('-'); // replace spaces with dashes
   if (count == 1) {
     let codeName = kabobName;
     return codeName;
   } else {
-    let maxNumber = Math.pow(2,count); // using 2^count to keep it low
-    let randomNumber = getRandomInt(2,maxNumber);
+    let maxNumber = Math.pow(2, count); // using 2^count to keep it low
+    let randomNumber = getRandomInt(2, maxNumber);
     let codeName = kabobName + randomNumber;
     console.log('generated code name');
     return codeName;
@@ -101,22 +97,15 @@ function generateCodeName(name, count) {
 
 function getRandomInt(min, max) {
   // Returns a random integer between min (inclusive) and max (inclusive)
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function isUnique(codeName) {
-  if (codeName == "nicolai-safai") {
-    console.log('codename is unique' + codeName);
-    return true;
-  } else {
-    console.log('codename is false');
-    return false;
-  }
-
+  console.log('codename is unique' + codeName);
   // look up user by codeName
-    // if unique, return true
-    // else return false
-
+  // if unique, return true
+  // else return false
+  return true;
 }
 
 
