@@ -84,7 +84,8 @@ UserSchema.statics.authenticate = function(email, password, next) {
 }
 
 function generateCodeName(name, count) {
-  let kabobName = name.split(' ').join('-'); // replace spaces with dashes
+  let kabobName = name.split(' ').join('-').toLowerCase(); // replace spaces with dashes and converts to lower case
+  console.log(kabobName);
   if (count == 1) {
     let codeName = kabobName;
     return codeName;
@@ -104,12 +105,18 @@ function getRandomInt(min, max) {
 }
 
 function isUnique(codeName) {
-  if 
-  console.log('codename is unique' + codeName);
+  if (codeName == "nicolai-safai") {
+    console.log('codename is unique' + codeName);
+    return true;
+  } else {
+    console.log('codename is false');
+    return false;
+  }
+
   // look up user by codeName
     // if unique, return true
     // else return false
-  return true;
+
 }
 
 
