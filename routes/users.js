@@ -53,7 +53,7 @@ router.get('/logout', (req, res, next) => {
 
 // POST/CREATE NEW prop
 router.post('/save-vote', auth.requireLogin, function(req, res, next) {
-  if (req.body.yesVote !== undefined) {
+  if (req.body.yesVote !== undefined) { // user voted yes
     console.log('clicked yes');
     User.findByIdAndUpdate(
       res.locals.user._id, {
@@ -70,9 +70,9 @@ router.post('/save-vote', auth.requireLogin, function(req, res, next) {
         };
         res.locals.user.arrayOfYesVotes.push(req.body.yesVote); // so it updates on client side
         res.locals.user.arrayOfNoVotes.pop(req.body.yesVote);
-        res.redirect('/');
+        res.redirect('/' + "#" + req.body.yesVote);
       });
-  } else if (req.body.noVote !== undefined) {
+  } else if (req.body.noVote !== undefined) { // user voted no
     console.log('clicked no');
     User.findByIdAndUpdate(
       res.locals.user._id, {
@@ -89,9 +89,9 @@ router.post('/save-vote', auth.requireLogin, function(req, res, next) {
         };
         res.locals.user.arrayOfNoVotes.push(req.body.noVote); // so it updates on client side
         res.locals.user.arrayOfYesVotes.pop(req.body.noVote);
-        res.redirect('/');
+        res.redirect('/' + "#" + req.body.noVote);
       });
-  } else if (req.body.undoYesVote !== undefined) {
+  } else if (req.body.undoYesVote !== undefined) { // user undid yes vote
     console.log('clicked undo yes');
     User.findByIdAndUpdate(
       res.locals.user._id, {
@@ -104,9 +104,9 @@ router.post('/save-vote', auth.requireLogin, function(req, res, next) {
           console.error(err)
         };
         res.locals.user.arrayOfYesVotes.pop(req.body.undoYesVote); // so it updates on client side
-        res.redirect('/');
+        res.redirect('/' + "#" + req.body.undoYesVote);
       });
-  } else if (req.body.undoNoVote !== undefined) {
+  } else if (req.body.undoNoVote !== undefined) { // user undid yes vote
     console.log('clicked undo no');
     User.findByIdAndUpdate(
       res.locals.user._id, {
@@ -119,7 +119,7 @@ router.post('/save-vote', auth.requireLogin, function(req, res, next) {
           console.error(err)
         };
         res.locals.user.arrayOfNoVotes.pop(req.body.undoNoVote); // so it updates on client side
-        res.redirect('/');
+        res.redirect('/' + "#" + req.body.undoNoVote);
       });
   }
 });

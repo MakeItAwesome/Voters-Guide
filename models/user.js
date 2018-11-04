@@ -20,7 +20,7 @@ const UserSchema = new Schema({
   },
   profilePublic: {
     type: Boolean,
-    default: false
+    default: true
   },
   arrayOfYesVotes: {
     type: Array
@@ -29,7 +29,8 @@ const UserSchema = new Schema({
     type: Array
   },
   codeName: {
-    type: String
+    type: String,
+    unique: true
   }
 });
 
@@ -59,47 +60,38 @@ UserSchema.statics.authenticate = function(email, password, next) {
 
 UserSchema.pre('save', function(next) {
   // before saving
-  var user = this;
-
+  let user = this;
   // generate code name
   attempt = 1
-  let codeName = generateCodeName(user.name, attempt);
+  codeName = generateCodeName(user.name, attempt);
   console.log("first attempt at codename is: " + codeName)
-  attempt += 1;
 
-  User.findOne({
-    // look up user by codeName
-      codeName: codeName
-    })
-    .exec(function(err, userWithCodeName) {
-      if (err) {
-        return next(err)
-      }
-
-      while (userWithCodeName) { // while system finds a user with suggested codeName
-        console.log("codename is not unique, regenerating. first attempt was: " + codeName + " going to regenerate");
-        let codeName = generateCodeName(user.name, attempt);
-        attempt += 1;
-        isCodeNameUnique = isUnique(codeName);
-      }
-    });
-    // once we exit the loop above, we know codeName is unique
-    bcrypt.hash(user.password, 12, function(err, hash) { // hash password
+  User.findOne({ codeName: codeName }).exec(function(err, userWithCodeName) {
+    if (err) {
+      return next(err)
+    } else if (userWithCodeName) {
+      console.log('user found, you should try another!');
+      attempt += 1;
+      codeName = generateCodeName(user.name, attempt);
+    }
+    bcrypt.hash(user.password, 12, function(err, hash) {
       if (err) return next(err);
-      user.password = hash; // save hashed password to user
       user.codeName = codeName;
+      user.password = hash;
       next();
     })
+  });
+
 });
 
 function generateCodeName(name, count) {
-  let kabobName = name.split(' ').join('-'); // replace spaces with dashes
-  if (count == 1) {
+  let kabobName = name.split(' ').join('-').toLowerCase(); // replace spaces with dashes
+  if (count == 1) { // if this is the first time we're trying, let's give you the vanity URL
     let codeName = kabobName;
     return codeName;
   } else {
-    let maxNumber = Math.pow(2, count); // using 2^count to keep it low
-    let randomNumber = getRandomInt(2, maxNumber); // start at 2 since one person will have the no number codeName
+    let maxNumber = Math.pow(100, count);
+    let randomNumber = getRandomInt(1, maxNumber);
     let codeName = kabobName + "-" + randomNumber;
     console.log('generated code name: ' + codeName);
     return codeName;
