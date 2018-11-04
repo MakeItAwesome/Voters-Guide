@@ -66,28 +66,20 @@ UserSchema.pre('save', function(next) {
   codeName = generateCodeName(user.name, attempt);
   console.log("first attempt at codename is: " + codeName)
 
-  User.findOne({ codeName: codeName }).exec(function(err, user) {
+  User.findOne({ codeName: codeName }).exec(function(err, userWithCodeName) {
     if (err) {
       return next(err)
-    } else if (!user) {
-      console.log('no user found, codeName is unique!');
-      bcrypt.hash(user.password, 12, function(err, hash) {
-        if (err) return next(err);
-        user.codeName = codeName;
-        user.password = hash;
-        next();
-      })
-    } else if (user) {
+    } else if (userWithCodeName) {
       console.log('user found, you should try another!');
       attempt += 1;
       codeName = generateCodeName(user.name, attempt);
-      bcrypt.hash(user.password, 12, function(err, hash) {
-        if (err) return next(err);
-        user.codeName = codeName;
-        user.password = hash;
-        next();
-      })
     }
+    bcrypt.hash(user.password, 12, function(err, hash) {
+      if (err) return next(err);
+      user.codeName = codeName;
+      user.password = hash;
+      next();
+    })
   });
 
 });
