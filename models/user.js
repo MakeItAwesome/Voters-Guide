@@ -59,7 +59,7 @@ UserSchema.statics.authenticate = function(email, password, next) {
 
 UserSchema.pre('save', function(next) {
   // before saving
-  var user = this;
+  let user = this;
 
   // generate code name
   attempt = 1
@@ -67,29 +67,26 @@ UserSchema.pre('save', function(next) {
   console.log("first attempt at codename is: " + codeName)
   attempt += 1;
 
-  User.findOne({
-    // look up user by codeName
-      codeName: codeName
-    })
-    .exec(function(err, userWithCodeName) {
-      if (err) {
-        return next(err)
-      }
+  isCodeNameUnique = isUnique(codeName)
+  console.log("the result of isUnique(codeName) is: " + isCodeNameUnique);
 
-      while (userWithCodeName) { // while system finds a user with suggested codeName
-        console.log("codename is not unique, regenerating. first attempt was: " + codeName + " going to regenerate");
-        let codeName = generateCodeName(user.name, attempt);
-        attempt += 1;
-        isCodeNameUnique = isUnique(codeName);
-      }
-    });
-    // once we exit the loop above, we know codeName is unique
-    bcrypt.hash(user.password, 12, function(err, hash) { // hash password
+  while (isUnique(codeName) == false) {
+    console.log("codename is not unique, regenerating. first attempt was: " + codeName);
+    let codeName = generateCodeName(user.name, attempt);
+    attempt += 1;
+    isCodeNameUnique = isUnique(codeName);
+  }
+
+  if (isUnique(codeName) == true) {
+    console.log("codename is unique: " + codeName)
+    // encrypt password
+    bcrypt.hash(user.password, 12, function(err, hash) {
       if (err) return next(err);
-      user.password = hash; // save hashed password to user
-      user.codeName = codeName;
+
+      user.password = hash;
       next();
     })
+  }
 });
 
 function generateCodeName(name, count) {
@@ -109,6 +106,27 @@ function generateCodeName(name, count) {
 function getRandomInt(min, max) {
   // Returns a random integer between min (inclusive) and max (inclusive)
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function isUnique(codeName) {
+
+  User.findOne({
+    // look up user by codeName
+      codeName: codeName
+    })
+    .exec(function(err, user) {
+      if (err) {
+        return next(err)
+      } else if (!user) {
+        console.log('found nobody with that code name');
+        return false; // being sent back as undefined
+      } else {
+        console.log('found somebody with code name');
+        return true; // being sent back as undefined
+      }
+      console.log('exiting findOne');
+    });
+    console.log('exiting isUnique');
 }
 
 const User = mongoose.model('User', UserSchema);
