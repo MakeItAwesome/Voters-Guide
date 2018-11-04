@@ -66,6 +66,7 @@ UserSchema.pre('save', function(next) {
   console.log("first attempt at codename is: " + codeName)
 
   var codeNameIsUnique = isUnique(codeName);
+  console.log('codeName is unique: ' + codeNameIsUnique); // undefined
 
   while (codeNameIsUnique == false) {
     codeName = generateCodeName(user.name, attempt);
