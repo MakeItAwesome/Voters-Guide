@@ -20,7 +20,7 @@ const UserSchema = new Schema({
   },
   profilePublic: {
     type: Boolean,
-    default: false
+    default: true
   },
   arrayOfYesVotes: {
     type: Array
@@ -29,7 +29,8 @@ const UserSchema = new Schema({
     type: Array
   },
   codeName: {
-    type: String
+    type: String,
+    unique: true
   }
 });
 
@@ -65,33 +66,40 @@ UserSchema.pre('save', function(next) {
   codeName = generateCodeName(user.name, attempt);
   console.log("first attempt at codename is: " + codeName)
 
-  var codeNameIsUnique = isUnique(codeName);
-  console.log('codeName is unique: ' + codeNameIsUnique); // undefined
+  User.findOne({ codeName: codeName }).exec(function(err, user) {
+    if (err) {
+      return next(err)
+    } else if (!user) {
+      console.log('no user found, codeName is unique!');
+      bcrypt.hash(user.password, 12, function(err, hash) {
+        if (err) return next(err);
+        user.codeName = codeName;
+        user.password = hash;
+        next();
+      })
+    } else if (user) {
+      console.log('user found, you should try another!');
+      attempt += 1;
+      codeName = generateCodeName(user.name, attempt);
+      bcrypt.hash(user.password, 12, function(err, hash) {
+        if (err) return next(err);
+        user.codeName = codeName;
+        user.password = hash;
+        next();
+      })
+    }
+  });
 
-  while (codeNameIsUnique == false) {
-    codeName = generateCodeName(user.name, attempt);
-    attempt += 1;
-    codeNameIsUnique = isUnique(codeName); // reset codeNameIsUnique to exit while loop
-  }
-
-  if (codeNameIsUnique == true) {
-    bcrypt.hash(user.password, 12, function(err, hash) {
-      if (err) return next(err);
-      user.codeName = codeName;
-      user.password = hash;
-      next();
-    })
-  }
 });
 
 function generateCodeName(name, count) {
-  let kabobName = name.split(' ').join('-'); // replace spaces with dashes
-  if (count == 1) {
+  let kabobName = name.split(' ').join('-').toLowerCase(); // replace spaces with dashes
+  if (count == 1) { // if this is the first time we're trying, let's give you the vanity URL
     let codeName = kabobName;
     return codeName;
   } else {
-    let maxNumber = Math.pow(2, count); // using 2^count to keep it low
-    let randomNumber = getRandomInt(2, maxNumber); // start at 2 since one person will have the no number codeName
+    let maxNumber = Math.pow(100, count);
+    let randomNumber = getRandomInt(1, maxNumber);
     let codeName = kabobName + "-" + randomNumber;
     console.log('generated code name: ' + codeName);
     return codeName;
@@ -101,21 +109,6 @@ function generateCodeName(name, count) {
 function getRandomInt(min, max) {
   // Returns a random integer between min (inclusive) and max (inclusive)
   return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function isUnique(codeName) {
-  User.findOne({ codeName: codeName }).exec(function(err, user) {
-    if (err) {
-      return next(err)
-    } else if (!user) {
-      console.log('no user found, codeName is unique!');
-      return true;
-    } else if (user) {
-      console.log('user found, you should try another!');
-      return false;
-    }
-
-  });
 }
 
 const User = mongoose.model('User', UserSchema);
