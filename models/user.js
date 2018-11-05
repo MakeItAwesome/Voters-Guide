@@ -20,19 +20,13 @@ const UserSchema = new Schema({
   },
   profilePublic: {
     type: Boolean,
-<<<<<<< HEAD
-    default: false
-=======
     default: true
->>>>>>> 038c9845ce5710e1c94583056ca19b44bfce6d4d
   },
   arrayOfYesVotes: {
     type: Array
   },
   arrayOfNoVotes: {
     type: Array
-<<<<<<< HEAD
-=======
   },
   codeName: {
     type: String,
@@ -41,7 +35,6 @@ const UserSchema = new Schema({
   isAdmin: {
     type: Boolean,
     default: false
->>>>>>> 038c9845ce5710e1c94583056ca19b44bfce6d4d
   }
 });
 

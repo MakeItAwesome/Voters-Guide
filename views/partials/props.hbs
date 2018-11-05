@@ -6,47 +6,6 @@
         <a href="{{prop.readMoreUrl}}" target="_blank" class="source-link">(Source: votersedge.org)</a>
       </div>
       <div class="pros-and-cons-container">
-<<<<<<< HEAD
-
-        <div class="card card__pros mb-3">
-          <div class="card-header">People <strong>FOR</strong> say</div>
-          <div class="card-body">
-            {{#each prop.pros as |pro|}}
-              <ul>
-                {{#if pro}} <!-- check that the "pro" array item is not empty before rendering -->
-                  <li><span>
-                    {{pro}}
-                  </span></li>
-                {{/if}}
-              </ul>
-            {{/each}}
-          </div>
-          <div class="card-footer save-vote">
-            Save Vote
-          </div>
-        </div> <!-- pros card container -->
-
-        <div class="card card__cons mb-3">
-          <div class="card-header">People <strong>AGAINST</strong> say</div>
-          <div class="card-body">
-            {{#each prop.cons as |con|}}
-              <ul>
-                {{#if con}}  <!-- check that the "con" array item is not empty before rendering -->
-                  <li>
-                    {{con}}
-                  </li>
-                {{/if}}
-              </ul>
-            {{/each}}
-          </div>
-          <a href="" class="save-vote-link">
-            <div class="card-footer save-vote">
-            Save Vote
-            </div>
-          </a>
-        </div> <!-- cons card container -->
-
-=======
         <div class="card-container">
           <div class="card card__pros mb-3">
             <div class="card-header">People <strong>FOR</strong> say</div>
@@ -99,13 +58,10 @@
             {{/contains}}
           </div> <!-- cons card container -->
         </div> <!-- card container -->
->>>>>>> 038c9845ce5710e1c94583056ca19b44bfce6d4d
       </div> <!-- pros and cons container -->
     {{/each}}
   </div> <!-- card deck container -->
 </div> <!-- all props -->
-<<<<<<< HEAD
-=======
 
 {{!-- <script src="/js/props.js"></script> --}}
 {{!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> --}}
@@ -117,4 +73,3 @@
   $(".pros-and-cons-container").scrollLeft((cardContainerWidth - windowWidth) / 2);
 
 </script>
->>>>>>> 038c9845ce5710e1c94583056ca19b44bfce6d4d
