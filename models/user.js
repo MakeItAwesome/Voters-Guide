@@ -31,6 +31,10 @@ const UserSchema = new Schema({
   codeName: {
     type: String,
     unique: true
+  },
+  isAdmin: {
+    type: Boolean,
+    default: false
   }
 });
 
