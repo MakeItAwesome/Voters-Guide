@@ -1,19 +1,46 @@
 <div class="top">
-  <h1>{{title}}</h1>
+  <h1 id="title">{{title}}</h1>
   <p>People are busy. People often don't vote for propositions
     because they don't know what they're about. We've synthesized
     the important information below.</p>
-    {{#if user}}
-      <input class="profile-toggle"type="checkbox" checked data-toggle="toggle" data-on="Profile Public" data-off="Profile Private" data-onstyle="success" data-offstyle="danger">
-      {{#if user.profilePublic}}
-        <div class="copy-section">
-         <input type="text" class="code-name" id="code-name" readonly="readonly" value="{{user.codeName}}">
-         <button class="copy-btn" onClick="copyText('code-name')">Copy</button>
-        </div>
-      {{/if}}
-    {{/if}}
+  {{#if user}}
+    <div class="toggle-profile">
+      Private
+      <label class="switch">
+        <input id="privacyToggle" type="checkbox" {{#if user.profilePublic}} checked {{/if}}>
+        <span class="slider round"></span>
+      </label>
+      Public
+    </div>
+    <div class="copy-section" id="copy-section" {{#if user.profilePublic}} {{else}} style="display:none" {{/if}}>
+      <input type="text" class="code-name" id="code-name" readonly="readonly" value="{{user.codeName}}">
+      <button class="copy-btn anim-hov-fast" onClick="copyText('code-name')">Copy</button>
+    </div>
+  {{/if}}
 </div>
-
 {{> props}}
-
 <script src="/js/props.js"></script>
+<script>
+  var privacyToggle = document.getElementById("privacyToggle");
+  privacyToggle.addEventListener("click", function() {
+
+    if (privacyToggle.checked == true) {
+      document.getElementById('copy-section').style.display = "";
+      // axios.post('/toggle-privacy');
+      axios.post('/toggle-privacy', {
+          profilePublic: true
+      }).catch(error => {
+          console.error(error);
+      });
+      // document.getElementById("title").innerHTML = "PUBLIC";
+    } else {
+      document.getElementById('copy-section').style.display = "none";
+      axios.post('/toggle-privacy', {
+          profilePublic: false
+      }).catch(error => {
+          console.error(error);
+      });
+      // document.getElementById("title").innerHTML = "PRIVATE";
+    }
+  });
+</script>

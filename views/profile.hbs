@@ -1,0 +1,14 @@
+<div class="top">
+  {{#if user}}
+    {{#if user.profilePublic}}
+      <h1>{{user.name}}'s Votes</h1>
+    {{else}}
+      <h1>Nothing to see here.</h1>
+      <p>This user has decided to keep their votes private.</p>
+    {{/if}}
+  {{/if}}
+</div>
+
+{{> props}}
+
+<script src="/js/props.js"></script>

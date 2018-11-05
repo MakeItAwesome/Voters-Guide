@@ -4,39 +4,6 @@ const User = require('../models/user');
 const Proposition = require('../models/proposition');
 const auth = require('./helpers/auth');
 
-/* SHOW Users votes. */
-router.get('/friend/:codeName', function(req, res, next) {
-  console.log(req.params);
-  User.findOne({
-      codeName: req.params.codeName
-    })
-    .exec(function(err, userWithCodeName) {
-      if (err) {
-        return next(err)
-      } else if (userWithCodeName) {
-        console.log(userWithCodeName);
-        Proposition.find({}, function(err, props) {
-          if (err) {
-            console.error(err);
-          } else {
-            res.render('index', {
-              props: props,
-              user: userWithCodeName
-            });
-          }
-        })
-      } else if (!userWithCodeName) {
-        Proposition.find({}, function(err, props) {
-          if (err) {
-            console.error(err);
-          } else {
-            res.send('No user goes by: ' + req.params.codeName);
-          }
-        })
-      }
-    });
-});
-
 // GET signup
 router.get('/signup', (req, res, next) => {
   res.render('users/signup');
@@ -85,7 +52,7 @@ router.get('/logout', (req, res, next) => {
   return res.redirect('/');
 });
 
-// POST/CREATE NEW prop
+// POST/SAVE NEW prop
 router.post('/save-vote', auth.requireLogin, function(req, res, next) {
   console.log(req);
   if (req.body.yesVote !== undefined) { // user voted yes
@@ -162,6 +129,54 @@ router.post('/save-vote', auth.requireLogin, function(req, res, next) {
   }
   console.log(req.session.user);
 
+});
+
+/* SHOW Users votes. */
+router.get('/friend/:codeName', function(req, res, next) {
+  console.log(req.params);
+  User.findOne({
+      codeName: req.params.codeName
+    })
+    .exec(function(err, userWithCodeName) {
+      if (err) {
+        return next(err)
+      } else if (userWithCodeName) {
+        console.log(userWithCodeName);
+        Proposition.find({}, function(err, props) {
+          if (err) {
+            console.error(err);
+          } else {
+            res.render('profile', {
+              props: props,
+              user: userWithCodeName
+            });
+          }
+        })
+      } else if (!userWithCodeName) {
+        Proposition.find({}, function(err, props) {
+          if (err) {
+            console.error(err);
+          } else {
+            res.send('No user goes by: ' + req.params.codeName);
+          }
+        })
+      }
+    });
+});
+
+router.post('/toggle-privacy', function(req, res, next) {
+  console.log(req.body);
+  User.findByIdAndUpdate(
+    res.locals.user._id, {
+      $set: {
+        profilePublic: req.body.profilePublic
+      }
+    },
+    function(err) {
+      if (err) {
+        console.error(err)
+      };
+    });
 });
 
 module.exports = router;
