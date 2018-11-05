@@ -87,6 +87,7 @@ router.get('/logout', (req, res, next) => {
 
 // POST/CREATE NEW prop
 router.post('/save-vote', auth.requireLogin, function(req, res, next) {
+  console.log(req);
   if (req.body.yesVote !== undefined) { // user voted yes
     console.log('clicked yes');
     User.findByIdAndUpdate(
@@ -102,6 +103,7 @@ router.post('/save-vote', auth.requireLogin, function(req, res, next) {
         if (err) {
           console.error(err)
         };
+
         res.locals.user.arrayOfYesVotes.push(req.body.yesVote); // so it updates on client side
         res.locals.user.arrayOfNoVotes.pop(req.body.yesVote);
         res.redirect('/');
@@ -154,9 +156,12 @@ router.post('/save-vote', auth.requireLogin, function(req, res, next) {
           console.error(err)
         };
         res.locals.user.arrayOfNoVotes.pop(req.body.undoNoVote); // so it updates on client side
+        console.log(res.locals.user);
         res.redirect('/');
       });
   }
+  console.log(req.session.user);
+
 });
 
 module.exports = router;
