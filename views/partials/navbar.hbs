@@ -5,7 +5,7 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item"><a class="nav-link" href="#">Admin</a></li>
+       {{#if user.isAdmin}}<li><a href="/admin" class="btn btn-link">Admin</a></li>{{/if}}
       {{# if user}}
       <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
       {{else}}
