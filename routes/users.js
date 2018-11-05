@@ -1,7 +1,41 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
+const Proposition = require('../models/proposition');
 const auth = require('./helpers/auth');
+
+/* SHOW Users votes. */
+router.get('/friend/:codeName', function(req, res, next) {
+  console.log(req.params);
+  User.findOne({
+      codeName: req.params.codeName
+    })
+    .exec(function(err, userWithCodeName) {
+      if (err) {
+        return next(err)
+      } else if (userWithCodeName) {
+        console.log(userWithCodeName);
+        Proposition.find({}, function(err, props) {
+          if (err) {
+            console.error(err);
+          } else {
+            res.render('index', {
+              props: props,
+              user: userWithCodeName
+            });
+          }
+        })
+      } else if (!userWithCodeName) {
+        Proposition.find({}, function(err, props) {
+          if (err) {
+            console.error(err);
+          } else {
+            res.send('No user goes by: ' + req.params.codeName);
+          }
+        })
+      }
+    });
+});
 
 // GET signup
 router.get('/signup', (req, res, next) => {
@@ -64,7 +98,7 @@ router.post('/save-vote', auth.requireLogin, function(req, res, next) {
           arrayOfNoVotes: req.body.yesVote
         }
       },
-      function(err, event) {
+      function(err, vote) {
         if (err) {
           console.error(err)
         };
@@ -83,7 +117,7 @@ router.post('/save-vote', auth.requireLogin, function(req, res, next) {
           arrayOfYesVotes: req.body.noVote
         }
       },
-      function(err, event) {
+      function(err, vote) {
         if (err) {
           console.error(err)
         };
@@ -99,7 +133,7 @@ router.post('/save-vote', auth.requireLogin, function(req, res, next) {
           arrayOfNoVotes: req.body.undoYesVote
         }
       },
-      function(err, event) {
+      function(err, vote) {
         if (err) {
           console.error(err)
         };
@@ -114,7 +148,7 @@ router.post('/save-vote', auth.requireLogin, function(req, res, next) {
           arrayOfNoVotes: req.body.undoNoVote
         }
       },
-      function(err, event) {
+      function(err, vote) {
         if (err) {
           console.error(err)
         };
