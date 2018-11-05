@@ -104,7 +104,7 @@ router.post('/save-vote', auth.requireLogin, function(req, res, next) {
         };
         res.locals.user.arrayOfYesVotes.push(req.body.yesVote); // so it updates on client side
         res.locals.user.arrayOfNoVotes.pop(req.body.yesVote);
-        res.redirect('/' + "#" + req.body.yesVote);
+        res.redirect('/');
         // res.end();
       });
   } else if (req.body.noVote !== undefined) { // user voted no
@@ -124,7 +124,7 @@ router.post('/save-vote', auth.requireLogin, function(req, res, next) {
         };
         res.locals.user.arrayOfNoVotes.push(req.body.noVote); // so it updates on client side
         res.locals.user.arrayOfYesVotes.pop(req.body.noVote);
-        res.redirect('/' + "#" + req.body.noVote);
+        res.redirect('/');
       });
   } else if (req.body.undoYesVote !== undefined) { // user undid yes vote
     console.log('clicked undo yes');
@@ -139,7 +139,7 @@ router.post('/save-vote', auth.requireLogin, function(req, res, next) {
           console.error(err)
         };
         res.locals.user.arrayOfYesVotes.pop(req.body.undoYesVote); // so it updates on client side
-        res.redirect('/' + "#" + req.body.undoYesVote);
+        res.redirect('/');
       });
   } else if (req.body.undoNoVote !== undefined) { // user undid yes vote
     console.log('clicked undo no');
@@ -154,7 +154,7 @@ router.post('/save-vote', auth.requireLogin, function(req, res, next) {
           console.error(err)
         };
         res.locals.user.arrayOfNoVotes.pop(req.body.undoNoVote); // so it updates on client side
-        res.redirect('/' + "#" + req.body.undoNoVote);
+        res.redirect('/');
       });
   }
 });
