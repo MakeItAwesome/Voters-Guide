@@ -1,64 +1,71 @@
-<div class="container">
-  <form action="/admin/props" method="post" class="center_div">
-    <h1>New Proposition</h1>
-    <div class="form-group">
-      <label for="prop-name">Proposition Name</label><span class="required-star">*</span>
-      <input type="text" name="name" class="form-control" id="prop-name" placeholder="ex: Proposition 1 or Proposition E" required>
-    </div>
-    <div class="form-group">
-      <label for="prop-summary">Summary</label><span class="required-star">*</span>
-      <input type="text" name="summary" class="form-control" id="prop-summary" placeholder="Briefly explain what the proposition is about" required>
-    </div>
-    <div class="form-group">
-      <label for="prop-pros">Pros #1</label><span class="required-star">*</span>
-      <input type="text" name="pros" class="form-control" id="prop-pros" placeholder="What do proponents say about it?" required>
-    </div>
-    <div class="form-group">
-      <label for="prop-pros">Pros #2</label><span class="required-star">*</span>
-      <input type="text" name="pros" class="form-control" id="prop-pros" placeholder="What do proponents say about it?" required>
-    </div>
-    <div class="form-group">
-      <label for="prop-pros">Pros #3</label>
-      <input type="text" name="pros" class="form-control" id="prop-pros" placeholder="What do proponents say about it?">
-    </div>
-    <div class="form-group">
-      <label for="prop-pros">Pros #4</label>
-      <input type="text" name="pros" class="form-control" id="prop-pros" placeholder="What do proponents say about it?">
-    </div>
+{{#if user.isAdmin}}
+  <div class="container">
+    <form action="/admin/props" method="post" class="center_div">
+      <h1>New Proposition</h1>
       <div class="form-group">
-      <label for="prop-pros">Pros #5</label>
-      <input type="text" name="pros" class="form-control" id="prop-pros" placeholder="What do proponents say about it?">
-    </div>
-    <div class="form-group">
-      <label for="prop-cons">Cons #1</label><span class="required-star">*</span>
-      <input type="text" name="cons" class="form-control" id="prop-cons" placeholder="What do people against this proposition say?" required>
-    </div>
-    <div class="form-group">
-      <label for="prop-cons">Cons #2</label><span class="required-star">*</span>
-      <input type="text" name="cons" class="form-control" id="prop-cons" placeholder="What do people against this proposition say?" required>
-    </div>
-    <div class="form-group">
-      <label for="prop-cons">Cons #3</label>
-      <input type="text" name="cons" class="form-control" id="prop-cons" placeholder="What do people against this proposition say?">
-    </div>
-    <div class="form-group">
-      <label for="prop-cons">Cons #4</label>
-      <input type="text" name="cons" class="form-control" id="prop-cons" placeholder="What do people against this proposition say?">
-    </div>
-    <div class="form-group">
-      <label for="prop-cons">Cons #5</label>
-      <input type="text" name="cons" class="form-control" id="prop-cons" placeholder="What do people against this proposition say?">
-    </div>
-    <div class="form-group">
-      <label for="prop-read-more-url">Read More URL</label><span class="required-star">*</span>
-      <input type="text" name="readMoreUrl" class="form-control" id="prop-read-more-url" placeholder="Where can I read more about this prop?" required>
-    </div>
-    <div class="form-group">
-      <label for="prop-area">Who votes on this? (Enter 'California' or 'San Francisco')</label><span class="required-star">*</span>
-      <input type="text" name="area" class="form-control" id="prop-area" placeholder="'California' or 'San Francisco'" required>
-    </div>
-    <div class="text-left">
-      <button type="submit" class="btn btn-dark">Create</button>
-    </div>
-  </form>
-</div>
+        <label for="prop-name">Proposition Name</label><span class="required-star">*</span>
+        <input type="text" name="name" class="form-control" id="prop-name" placeholder="ex: Proposition 1 or Proposition E" required>
+      </div>
+      <div class="form-group">
+        <label for="prop-summary">Summary</label><span class="required-star">*</span>
+        <input type="text" name="summary" class="form-control" id="prop-summary" placeholder="Briefly explain what the proposition is about" required>
+      </div>
+      <div class="form-group">
+        <label for="prop-pros">Pros #1</label><span class="required-star">*</span>
+        <input type="text" name="pros" class="form-control" id="prop-pros" placeholder="What do proponents say about it?" required>
+      </div>
+      <div class="form-group">
+        <label for="prop-pros">Pros #2</label><span class="required-star">*</span>
+        <input type="text" name="pros" class="form-control" id="prop-pros" placeholder="What do proponents say about it?" required>
+      </div>
+      <div class="form-group">
+        <label for="prop-pros">Pros #3</label>
+        <input type="text" name="pros" class="form-control" id="prop-pros" placeholder="What do proponents say about it?">
+      </div>
+      <div class="form-group">
+        <label for="prop-pros">Pros #4</label>
+        <input type="text" name="pros" class="form-control" id="prop-pros" placeholder="What do proponents say about it?">
+      </div>
+        <div class="form-group">
+        <label for="prop-pros">Pros #5</label>
+        <input type="text" name="pros" class="form-control" id="prop-pros" placeholder="What do proponents say about it?">
+      </div>
+      <div class="form-group">
+        <label for="prop-cons">Cons #1</label><span class="required-star">*</span>
+        <input type="text" name="cons" class="form-control" id="prop-cons" placeholder="What do people against this proposition say?" required>
+      </div>
+      <div class="form-group">
+        <label for="prop-cons">Cons #2</label><span class="required-star">*</span>
+        <input type="text" name="cons" class="form-control" id="prop-cons" placeholder="What do people against this proposition say?" required>
+      </div>
+      <div class="form-group">
+        <label for="prop-cons">Cons #3</label>
+        <input type="text" name="cons" class="form-control" id="prop-cons" placeholder="What do people against this proposition say?">
+      </div>
+      <div class="form-group">
+        <label for="prop-cons">Cons #4</label>
+        <input type="text" name="cons" class="form-control" id="prop-cons" placeholder="What do people against this proposition say?">
+      </div>
+      <div class="form-group">
+        <label for="prop-cons">Cons #5</label>
+        <input type="text" name="cons" class="form-control" id="prop-cons" placeholder="What do people against this proposition say?">
+      </div>
+      <div class="form-group">
+        <label for="prop-read-more-url">Read More URL</label><span class="required-star">*</span>
+        <input type="text" name="readMoreUrl" class="form-control" id="prop-read-more-url" placeholder="Where can I read more about this prop?" required>
+      </div>
+      <div class="form-group">
+        <label for="prop-area">Who votes on this? (Enter 'California' or 'San Francisco')</label><span class="required-star">*</span>
+        <input type="text" name="area" class="form-control" id="prop-area" placeholder="'California' or 'San Francisco'" required>
+      </div>
+      <div class="text-left">
+        <button type="submit" class="btn btn-dark">Create</button>
+      </div>
+    </form>
+  </div>
+  {{else}}
+    You must be an admin to view this page.
+    {{#if user}}
+      You are logged in with: {{user.email}}
+    {{/if}}
+  {{/if}}
