@@ -41,16 +41,29 @@ body {
         font-size: 0.93rem;
         margin-bottom: .8rem;
       }
-      .signup-btn {
-        background-color: $black;
-        color: $dark-grey;
-        border: none;
-        margin-bottom: 1.2rem;
-        letter-spacing: 1px;
-        padding: 4px 20px;
+      .profile-toggle {
+        margin-bottom: 1em;
       }
-      .signup-btn:hover {
-        color: $mid-grey;
+      .copy-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1em 0em 0em 0em;
+        .copy-btn {
+          border-radius: 0.2em;
+          background-color: $black;
+          color: $dark-grey;
+          border: none;
+          letter-spacing: 1px;
+          padding: 4px 20px;
+          -webkit-transition: background-color .5s ease-out;
+          -moz-transition: background-color .5s ease-out;
+          -o-transition: background-color .5s ease-out;
+          transition: background-color .5s ease-out;
+        }
+        .copy-btn:hover {
+          background-color: $green;
+        }
       }
     }
     .all-props-container {
@@ -101,15 +114,16 @@ body {
                   margin: 5px 0px 5px 0px;
                 }
               }
-              form button {
+              button {
                 text-align: center;
                 background-color: $black;
                 color:white;
                 padding: .4em .25em;
                 width: 100%;
               }
-              .savedVote {
-                background-color: green;
+              .prop-voted {
+                // add fade in animation for when we implement axios.
+                background-color: $green;
               }
             }
             .card.card__pros {

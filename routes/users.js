@@ -105,6 +105,7 @@ router.post('/save-vote', auth.requireLogin, function(req, res, next) {
         res.locals.user.arrayOfYesVotes.push(req.body.yesVote); // so it updates on client side
         res.locals.user.arrayOfNoVotes.pop(req.body.yesVote);
         res.redirect('/' + "#" + req.body.yesVote);
+        // res.end();
       });
   } else if (req.body.noVote !== undefined) { // user voted no
     console.log('clicked no');

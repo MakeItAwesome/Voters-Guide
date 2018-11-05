@@ -23,7 +23,7 @@
             {{#contains @root.user.arrayOfYesVotes prop.id}}
               <form action="/save-vote" method="post">
                 <input type="hidden" name="undoYesVote" class="form-control" value="{{prop.id}}">
-                <button href="" class="save-vote-link" type="submit">Undo Vote</button>
+                <button href="" class="save-vote-link savedVote prop-voted" type="submit">Undo Vote</button>
               </form> <!-- undo yesVote form -->
             {{else}}
               <form action="/save-vote" method="post">
@@ -48,7 +48,7 @@
             {{#contains @root.user.arrayOfNoVotes prop.id}}
               <form action="/save-vote" method="post">
                 <input type="hidden" name="undoNoVote" class="form-control" value="{{prop.id}}">
-                <button href="" class="save-vote-link" type="submit">Undo Vote</button>
+                <button href="" class="save-vote-link prop-voted" type="submit">Undo Vote</button>
               </form> <!-- undo noVote form -->
             {{else}}
               <form action="/save-vote" method="post">
@@ -63,6 +63,8 @@
   </div> <!-- card deck container -->
 </div> <!-- all props -->
 
+{{!-- <script src="/js/props.js"></script> --}}
+{{!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> --}}
 <script type="text/javascript">
   // Grab width of window and card container
   const windowWidth = $(window).width();

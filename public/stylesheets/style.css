@@ -31,15 +31,26 @@ body {
         padding: 0px 8px;
         font-size: 0.93rem;
         margin-bottom: .8rem; }
-      body .container .top .signup-btn {
-        background-color: #1C1C1C;
-        color: #F5F5F5;
-        border: none;
-        margin-bottom: 1.2rem;
-        letter-spacing: 1px;
-        padding: 4px 20px; }
-      body .container .top .signup-btn:hover {
-        color: #cac9c8; }
+      body .container .top .profile-toggle {
+        margin-bottom: 1em; }
+      body .container .top .copy-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1em 0em 0em 0em; }
+        body .container .top .copy-section .copy-btn {
+          border-radius: 0.2em;
+          background-color: #1C1C1C;
+          color: #F5F5F5;
+          border: none;
+          letter-spacing: 1px;
+          padding: 4px 20px;
+          -webkit-transition: background-color .5s ease-out;
+          -moz-transition: background-color .5s ease-out;
+          -o-transition: background-color .5s ease-out;
+          transition: background-color .5s ease-out; }
+        body .container .top .copy-section .copy-btn:hover {
+          background-color: #5cb85c; }
     body .container .all-props-container {
       max-width: 960px;
       margin-left: auto;
@@ -82,14 +93,14 @@ body {
               body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card .card-body ul {
                 padding: .1em .2em .1em 1.3em;
                 margin: 5px 0px 5px 0px; }
-              body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card form button {
+              body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card button {
                 text-align: center;
                 background-color: #1C1C1C;
                 color: white;
                 padding: .4em .25em;
                 width: 100%; }
-              body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card .savedVote {
-                background-color: green; }
+              body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card .prop-voted {
+                background-color: #5cb85c; }
             body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__pros {
               border: 2px solid #636e72; }
               body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__pros .card-header {
