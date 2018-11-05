@@ -3,10 +3,17 @@
   <p>People are busy. People often don't vote for propositions
     because they don't know what they're about. We've synthesized
     the important information below.</p>
-    <p>{{#if user}}
-      {{user.profilePublic}}
-      {{user.codeName}}
-    {{/if}}</p>
+    {{#if user}}
+      <input class="profile-toggle"type="checkbox" checked data-toggle="toggle" data-on="Profile Public" data-off="Profile Private" data-onstyle="success" data-offstyle="danger">
+      {{#if user.profilePublic}}
+        <div class="copy-section">
+         <input type="text" class="code-name" id="code-name" readonly="readonly" value="{{user.codeName}}">
+         <button class="copy-btn" onClick="copyText('code-name')">Copy</button>
+        </div>
+      {{/if}}
+    {{/if}}
 </div>
 
 {{> props}}
+
+<script src="/js/props.js"></script>
