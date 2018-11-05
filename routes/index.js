@@ -56,7 +56,7 @@ router.post('/admin/props', function(req, res, next) {
   });
 });
 
-/* GET NEW prop form. */
+/* GET EDIT prop form. */
 router.get('/admin/props/:id/edit', function(req, res, next) {
   Proposition.findById(req.params.id, function(err, prop) {
     if (err) {
