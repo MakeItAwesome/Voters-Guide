@@ -23,20 +23,12 @@
             {{#contains @root.user.arrayOfYesVotes prop.id}}
               <form action="/save-vote" method="post">
                 <input type="hidden" name="undoYesVote" class="form-control" value="{{prop.id}}">
-                <button href="" class="save-vote-link" type="submit">
-                  <div class="card-footer save-vote">
-                    Undo Vote
-                  </div>
-                </button>
+                <button href="" class="save-vote-link" type="submit">Undo Vote</button>
               </form> <!-- undo yesVote form -->
             {{else}}
               <form action="/save-vote" method="post">
                 <input type="hidden" name="yesVote" class="form-control" value="{{prop.id}}">
-                <button href="" class="save-vote-link" type="submit">
-                  <div class="card-footer save-vote">
-                    Save Vote
-                  </div>
-                </button>
+                <button href="" class="save-vote-link" type="submit">Save Vote</button>
               </form> <!-- save yesVote form -->
             {{/contains}}
           </div> <!-- pros card container -->
@@ -56,20 +48,12 @@
             {{#contains @root.user.arrayOfNoVotes prop.id}}
               <form action="/save-vote" method="post">
                 <input type="hidden" name="undoNoVote" class="form-control" value="{{prop.id}}">
-                <button href="" class="save-vote-link" type="submit">
-                  <div class="card-footer save-vote">
-                    Undo Vote
-                  </div>
-                </button>
+                <button href="" class="save-vote-link" type="submit">Undo Vote</button>
               </form> <!-- undo noVote form -->
             {{else}}
               <form action="/save-vote" method="post">
                 <input type="hidden" name="noVote" class="form-control" value="{{prop.id}}">
-                <button href="" class="save-vote-link" type="submit">
-                  <div class="card-footer save-vote">
-                    Save Vote
-                  </div>
-                </button>
+                <button href="" class="save-vote-link" type="submit">Save Vote</button>
               </form> <!-- save noVote form -->
             {{/contains}}
           </div> <!-- cons card container -->
@@ -84,5 +68,6 @@
   const windowWidth = $(window).width();
   const cardContainerWidth = $('.card-container').width();
   // start the horizontal scroll in the middle
-  $(".pros-and-cons-container").scrollLeft( (cardContainerWidth - windowWidth) / 2);
+  $(".pros-and-cons-container").scrollLeft((cardContainerWidth - windowWidth) / 2);
+
 </script>

@@ -1,6 +1,5 @@
 a {
-  color: #F5F5F5;
-}
+  color: #F5F5F5; }
 
 body {
   font-family: 'IBM Plex Sans', sans-serif;
@@ -83,6 +82,14 @@ body {
               body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card .card-body ul {
                 padding: .1em .2em .1em 1.3em;
                 margin: 5px 0px 5px 0px; }
+              body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card form button {
+                text-align: center;
+                background-color: #1C1C1C;
+                color: white;
+                padding: .4em .25em;
+                width: 100%; }
+              body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card .savedVote {
+                background-color: green; }
             body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__pros {
               border: 2px solid #636e72; }
               body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__pros .card-header {
@@ -97,12 +104,5 @@ body {
                 padding-left: 1em; }
               body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__cons .card-body {
                 padding: .25em .25em .25em 0em; }
-          body .container .all-props-container .card-deck .pros-and-cons-container .save-vote {
-            text-align: center;
-            background-color: #1C1C1C;
-            color: white; }
-          body .container .all-props-container .card-deck .pros-and-cons-container .save-vote:hover {
-            background-color: white;
-            color: #1C1C1C; }
 
 /*# sourceMappingURL=style.css.map */

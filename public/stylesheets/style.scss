@@ -1,10 +1,5 @@
 @import "variables.scss";
 
-$black: #1C1C1C;
-$light-grey: #636e72;
-$mid-grey: #cac9c8;
-$dark-grey: #F5F5F5;
-
 a {
   color: $dark-grey;
 }
@@ -89,12 +84,9 @@ body {
         .pros-and-cons-container {
           display:flex;
           overflow-x: scroll;
-          width: 100%;
-          justify-content: center;
           .card-container {
             width: calc(280px * 2);
             display: flex;
-
             .card {
               width: 280px;
               box-shadow: 0 2px 9px 0 rgba(0,0,0,.3);
@@ -108,6 +100,16 @@ body {
                   padding: .1em .2em .1em 1.3em;
                   margin: 5px 0px 5px 0px;
                 }
+              }
+              form button {
+                text-align: center;
+                background-color: $black;
+                color:white;
+                padding: .4em .25em;
+                width: 100%;
+              }
+              .savedVote {
+                background-color: green;
               }
             }
             .card.card__pros {
@@ -133,20 +135,19 @@ body {
               }
             }
           }
-          .save-vote {
-            text-align: center;
-            background-color: $black;
-            color:white;
-          }
-          .save-vote:hover {
-            background-color: white;
-            color: $black;
-          }
+          // .save-vote {
+          //   text-align: center;
+          //   background-color: $black;
+          //   color:white;
+          // }
+          // .save-vote:hover {
+          //   background-color: white;
+          //   color: $black;
+          // }
           .voting-panel {
             // width:100%;
             // display:flex;
             // justify-content: center;
-            flex-flow: column !important;
             // margin: auto;
           }
         }
