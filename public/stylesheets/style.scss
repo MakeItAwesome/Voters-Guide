@@ -1,10 +1,5 @@
 @import "variables.scss";
 
-$black: #1C1C1C;
-$light-grey: #636e72;
-$mid-grey: #cac9c8;
-$dark-grey: #F5F5F5;
-
 a {
   color: $dark-grey;
 }
@@ -46,16 +41,29 @@ body {
         font-size: 0.93rem;
         margin-bottom: .8rem;
       }
-      .signup-btn {
-        background-color: $black;
-        color: $dark-grey;
-        border: none;
-        margin-bottom: 1.2rem;
-        letter-spacing: 1px;
-        padding: 4px 20px;
+      .profile-toggle {
+        margin-bottom: 1em;
       }
-      .signup-btn:hover {
-        color: $mid-grey;
+      .copy-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1em 0em 0em 0em;
+        .copy-btn {
+          border-radius: 0.2em;
+          background-color: $black;
+          color: $dark-grey;
+          border: none;
+          letter-spacing: 1px;
+          padding: 4px 20px;
+          -webkit-transition: background-color .5s ease-out;
+          -moz-transition: background-color .5s ease-out;
+          -o-transition: background-color .5s ease-out;
+          transition: background-color .5s ease-out;
+        }
+        .copy-btn:hover {
+          background-color: $green;
+        }
       }
     }
     .all-props-container {
@@ -65,10 +73,11 @@ body {
       .card-deck {
         justify-content: center;
         .prop-title {
+          font-size: 1.2em;
           color: $black;
           text-align: center;
           width: 100%;
-          display: flex;
+          display: block;
           align-items: center;
           margin-top:1em;
           margin-bottom:0.5em;
@@ -105,11 +114,22 @@ body {
                   margin: 5px 0px 5px 0px;
                 }
               }
+              button {
+                text-align: center;
+                background-color: $black;
+                color:white;
+                padding: .4em .25em;
+                width: 100%;
+              }
+              .prop-voted {
+                // add fade in animation for when we implement axios.
+                background-color: $green;
+              }
             }
             .card.card__pros {
               border: 2px solid $light-grey;
               .card-header {
-                text-align: center;
+                text-align: right;
                 padding-right: 1em;
               }
               .card-body {
@@ -120,7 +140,7 @@ body {
             .card.card__cons {
               border: 2px solid $light-grey;
               .card-header {
-                text-align: center;
+                text-align: left;
                 padding-left: 1em;
               }
               .card-body {
@@ -129,18 +149,24 @@ body {
               }
             }
           }
-          .save-vote {
-            text-align: center;
-            background-color: $black;
-            color:white;
+          // .save-vote {
+          //   text-align: center;
+          //   background-color: $black;
+          //   color:white;
+          // }
+          // .save-vote:hover {
+          //   background-color: white;
+          //   color: $black;
+          // }
+          .voting-panel {
+            // width:100%;
+            // display:flex;
+            // justify-content: center;
+            // margin: auto;
           }
-          .save-vote:hover {
-            background-color: white;
-            color: $black;
-          }
-
         }
       }
     }
   }
+  
 }

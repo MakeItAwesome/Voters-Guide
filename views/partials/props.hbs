@@ -1,15 +1,12 @@
 <div class="all-props-container">
-
   <div class="card-deck">
-
     {{#each props as |prop|}}
-
-      <div class="prop-title">
+      <div class="prop-title" id={{prop._id}}>
         <h3>{{prop.name}}</h3>
         <a href="{{prop.readMoreUrl}}" target="_blank" class="source-link">(Source: votersedge.org)</a>
       </div>
-
       <div class="pros-and-cons-container">
+<<<<<<< HEAD
 
         <div class="card card__pros mb-3">
           <div class="card-header">People <strong>FOR</strong> say</div>
@@ -49,10 +46,75 @@
           </a>
         </div> <!-- cons card container -->
 
+=======
+        <div class="card-container">
+          <div class="card card__pros mb-3">
+            <div class="card-header">People <strong>FOR</strong> say</div>
+            <div class="card-body">
+              {{#each prop.pros as |pro|}}
+                <ul>
+                  {{#if pro}} <!-- trim empty items from "pros" array -->
+                    <li><span>
+                        {{pro}}
+                      </span></li>
+                  {{/if}}
+                </ul>
+              {{/each}}
+            </div>
+            {{#contains @root.user.arrayOfYesVotes prop.id}}
+              <form action="/save-vote" method="post">
+                <input type="hidden" name="undoYesVote" class="form-control" value="{{prop.id}}">
+                <button href="" class="save-vote-link savedVote prop-voted" type="submit">Undo Vote</button>
+              </form> <!-- undo yesVote form -->
+            {{else}}
+              <form action="/save-vote" method="post">
+                <input type="hidden" name="yesVote" class="form-control" value="{{prop.id}}">
+                <button href="" class="save-vote-link" type="submit">Save Vote</button>
+              </form> <!-- save yesVote form -->
+            {{/contains}}
+          </div> <!-- pros card container -->
+          <div class="card card__cons mb-3">
+            <div class="card-header">People <strong>AGAINST</strong> say</div>
+            <div class="card-body">
+              {{#each prop.cons as |con|}}
+                <ul>
+                  {{#if con}} <!-- trim empty items from "cons" array -->
+                    <li>
+                      {{con}}
+                    </li>
+                  {{/if}}
+                </ul>
+              {{/each}}
+            </div>
+            {{#contains @root.user.arrayOfNoVotes prop.id}}
+              <form action="/save-vote" method="post">
+                <input type="hidden" name="undoNoVote" class="form-control" value="{{prop.id}}">
+                <button href="" class="save-vote-link prop-voted" type="submit">Undo Vote</button>
+              </form> <!-- undo noVote form -->
+            {{else}}
+              <form action="/save-vote" method="post">
+                <input type="hidden" name="noVote" class="form-control" value="{{prop.id}}">
+                <button href="" class="save-vote-link" type="submit">Save Vote</button>
+              </form> <!-- save noVote form -->
+            {{/contains}}
+          </div> <!-- cons card container -->
+        </div> <!-- card container -->
+>>>>>>> 038c9845ce5710e1c94583056ca19b44bfce6d4d
       </div> <!-- pros and cons container -->
-
     {{/each}}
-
   </div> <!-- card deck container -->
-
 </div> <!-- all props -->
+<<<<<<< HEAD
+=======
+
+{{!-- <script src="/js/props.js"></script> --}}
+{{!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> --}}
+<script type="text/javascript">
+  // Grab width of window and card container
+  const windowWidth = $(window).width();
+  const cardContainerWidth = $('.card-container').width();
+  // start the horizontal scroll in the middle
+  $(".pros-and-cons-container").scrollLeft((cardContainerWidth - windowWidth) / 2);
+
+</script>
+>>>>>>> 038c9845ce5710e1c94583056ca19b44bfce6d4d

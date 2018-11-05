@@ -1,9 +1,16 @@
 <h1>Admin Dashboard</h1>
-<a href="admin/props/new">Create new Proposition</a>
-{{#each props as |prop|}}
-    <ul>
-        <li>
-            {{prop.name}} (<a href="">Edit</a>)
-        </li>
-    </ul>
-{{/each}}
+{{#if user.isAdmin}}
+  <a href="admin/props/new">Create new Proposition</a>
+  {{#each props as |prop|}}
+      <ul>
+          <li>
+              {{prop.name}} (<a href="/admin/props/{{prop._id}}/edit/">Edit</a>)
+          </li>
+      </ul>
+  {{/each}}
+{{else}}
+  You must be an admin to view this page.
+  {{#if user}}
+    You are logged in with: {{user.email}}
+  {{/if}}
+{{/if}}
