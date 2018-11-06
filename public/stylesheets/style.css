@@ -53,7 +53,7 @@ body .container .top h1 {
 body .container .top p {
   padding: 0 8px;
   font-size: 0.93rem;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.5rem;
 }
 body .container .top hr {
   width: 100%;
@@ -149,6 +149,20 @@ body .container .top .copy-section .copy-btn {
 body .container .top .copy-section .copy-btn:hover {
   background-color: #5cb85c;
 }
+body .container .top .signup-btn {
+  background-color: #1C1C1C;
+  color: #ffffff;
+}
+@media (min-width: 768px) {
+  body .container .top .switch {
+    width: 80px;
+  }
+  body .container .top input:checked + .slider:before {
+    -webkit-transform: translateX(46px);
+    -ms-transform: translateX(46px);
+    transform: translateX(46px);
+  }
+}
 body .container .all-props-container {
   max-width: 960px;
   margin-left: auto;
@@ -224,7 +238,7 @@ body .container .all-props-container .card-deck .pros-and-cons-container .card-c
   border: 2px solid #636e72;
 }
 body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__pros .card-header {
-  text-align: center;
+  text-align: right;
   padding-right: 1em;
 }
 body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__pros .card-body {
@@ -234,11 +248,30 @@ body .container .all-props-container .card-deck .pros-and-cons-container .card-c
   border: 2px solid #636e72;
 }
 body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__cons .card-header {
-  text-align: center;
+  text-align: left;
   padding-left: 1em;
 }
 body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__cons .card-body {
   padding: 0.5em;
+}
+@media (min-width: 768px) {
+  body .container .all-props-container .card-deck .pros-and-cons-container .card-container {
+    width: calc(350px * 2);
+  }
+  body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card {
+    width: 350px;
+  }
+  body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__pros .card-header, body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__cons .card-header {
+    text-align: center;
+  }
+}
+@media (min-width: 992px) {
+  body .container .all-props-container .card-deck .pros-and-cons-container .card-container {
+    width: calc(450px * 2);
+  }
+  body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card {
+    width: 450px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
