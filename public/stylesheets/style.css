@@ -43,7 +43,7 @@ body nav .collapse {
 }
 body .container {
   padding: 0;
-  margin-top: 5em;
+  margin-top: 3em;
   margin-bottom: 2em;
 }
 body .container form {
@@ -89,9 +89,9 @@ body .container .top hr {
   margin-bottom: 1.5em;
 }
 body .container .top .subheader-description {
-  font-size: 1.2em;
+  font-size: 1.1em;
   margin-top: 1em;
-  max-width: 800px;
+  max-width: 700px;
 }
 body .container .top .profile-settings {
   margin-bottom: 1.5em;
