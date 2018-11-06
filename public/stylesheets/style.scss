@@ -54,7 +54,7 @@ body {
       p {
         padding: 0 8px;
         font-size: 0.93rem;
-        margin-bottom: 0.8rem;
+        margin-bottom: 1.5rem;
       }
 
       .subheader-description {
@@ -122,7 +122,7 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 1em 0 0;
+        margin: .5em 0 0;
         min-width: 300px;
         max-width: 450px;
         width: 40%;
@@ -142,6 +142,20 @@ body {
 
         .copy-btn:hover {
           background-color: $green;
+        }
+      }
+      .signup-btn {
+        background-color: $black;
+        color: #ffffff;
+      }
+      @media (min-width: 768px) { 
+        .switch {
+          width: 80px;
+        }
+        input:checked + .slider:before {
+          -webkit-transform: translateX(46px);
+          -ms-transform: translateX(46px);
+          transform: translateX(46px);
         }
       }
     }
@@ -188,7 +202,6 @@ body {
         .pros-and-cons-container {
           display: flex;
           overflow-x: scroll;
-
           .card-container {
             width: calc(280px * 2);
             display: flex;
@@ -229,7 +242,7 @@ body {
               border: 2px solid $light-grey;
 
               .card-header {
-                text-align: center;
+                text-align: right;
                 padding-right: 1em;
               }
 
@@ -243,13 +256,36 @@ body {
               border: 2px solid $light-grey;
 
               .card-header {
-                text-align: center;
+                text-align: left;
                 padding-left: 1em;
               }
 
               .card-body {
                 // no padding on the left side
                 padding: 0.5em;
+              }
+            }
+          }
+          // Medium devices (tablets, 768px and up)
+          @media (min-width: 768px) { 
+            .card-container {
+              width: calc(350px * 2);
+              .card {
+                width: 350px;
+              }
+              .card.card__pros, .card.card__cons {
+                .card-header {
+                  text-align: center;
+                }
+              }
+            }
+          }
+          // Large devices (desktops, 992px and up)
+          @media (min-width: 992px) {  
+            .card-container {
+              width: calc(450px * 2);
+              .card {
+                width: 450px;
               }
             }
           }
