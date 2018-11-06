@@ -6,13 +6,15 @@
 </head>
 
 <body>
-
-  {{> navbar}}
-
-  <main class="container">
-    {{{body}}}
-  </main>
-
+  <div id="wrapper">
+    {{> navbar}}
+    <main class="container">
+      {{{body}}}
+    </main>
+    <footer>
+      {{> footer}}
+    </footer>
+  </div>
   {{>scripts}}
 </body>
 

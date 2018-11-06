@@ -1,28 +1,39 @@
 @import "variables.scss";
 
 a {
-  color: $dark-grey;
+  color: $white-grey;
+}
+
+a:hover {
+  color:$mid-grey;
+}
+
+button {
+  border-radius: 0.11em;
 }
 
 body {
   font-family: 'IBM Plex Sans', sans-serif;
-  background-color: $mid-grey;
+  background-color: $light-grey;
 
   nav {
     background-color: $black;
+    padding-left:25px;
+    padding-right:25px;
 
     .navbar-brand a {
       font-weight: 800;
       letter-spacing: 1.5px;
+      color:$white-grey;
     }
 
     .navbar-nav a {
-      color: $dark-grey;
+      color: $white-grey;
     }
 
     .navbar-nav a:hover,
     a:hover {
-      color: $mid-grey;
+      color: $light-grey;
     }
 
     .collapse {
@@ -30,10 +41,29 @@ body {
     }
   }
 
+
+
   .container {
     padding: 0;
-    margin-top: 2em;
+    margin-top: 5em;
+    margin-bottom:2em;
 
+    // position: absolute;
+
+    form {
+      min-width:450px;
+
+      @media screen and (max-width: 768px) {
+        min-width:85%;
+      }
+      @media screen and (max-width: 320px) {
+        min-width:90%;
+      }
+    }
+
+    .helper-text {
+      margin-top:0.5em;
+    }
     .top {
       text-align: center;
       display: flex;
@@ -47,7 +77,7 @@ body {
       }
 
       h1 {
-        font-size: 3em;
+        font-size: 3.2em;
         font-weight: 800;
       }
 
@@ -58,18 +88,20 @@ body {
       }
 
       hr {
-        width:100%;
+        width: 100%;
         border-top: 1px solid rgba(0,0,0,0.2) !important;
-        margin-bottom:1.5em;
+        margin-bottom: 1.5em;
       }
 
       .subheader-description {
+        font-size:1.2em;
+        margin-top:1em;
         max-width: 800px;
       }
 
       .profile-settings {
-        margin-bottom:1.5em;
-        // border: 2px solid $light-grey;
+        margin-bottom: 1.5em;
+        // border: 2px solid $mid-grey;
       }
 
       .switch {
@@ -108,7 +140,7 @@ body {
       }
 
       input:focus + .slider {
-        box-shadow: 0 0 1px $dark-grey;
+        box-shadow: 0 0 1px $white-grey;
       }
 
       input:checked + .slider:before {
@@ -126,17 +158,17 @@ body {
       }
 
       .toggle-profile {
-        display:flex;
+        display: flex;
         justify-content: center;
         align-items: center;
       }
 
       .privacy-text {
-        margin:0;
+        margin: 0;
       }
 
       .switch {
-        margin:0;
+        margin: 0;
       }
 
       .copy-section {
@@ -145,7 +177,6 @@ body {
         align-items: center;
         margin: 1em 0 0;
         min-width: 350px;
-
         @media screen and (max-width: 320px) {
           .copy-section {
             width: 300px;
@@ -160,7 +191,7 @@ body {
         .copy-btn {
           border-radius: 0.2em;
           background-color: $black;
-          color: $dark-grey;
+          color: $white-grey;
           border: none;
           letter-spacing: 1px;
           padding: 4px 20px;
@@ -170,14 +201,23 @@ body {
           background-color: $green;
         }
       }
+      .signup-button-text {
+        max-width:200px;
+        color:$mid-grey;
+        font-size:0.8em;
+        margin-bottom:0.3em;
+      }
+
       .signup-btn {
         background-color: $black;
         color: #ffffff;
+        margin-bottom:1.5em;
       }
       @media (min-width: 768px) {
         .switch {
           width: 80px;
         }
+
         input:checked + .slider:before {
           -webkit-transform: translateX(46px);
           -ms-transform: translateX(46px);
@@ -204,7 +244,6 @@ body {
           align-items: center;
           margin-top: 1em;
           margin-bottom: 0.5em;
-
           // Proposition Header
           h3 {
             font-size: 1.0em;
@@ -219,7 +258,7 @@ body {
           }
 
           .source-link {
-            color: $light-grey;
+            color: $mid-grey;
           }
 
           .source-link:hover {
@@ -228,13 +267,14 @@ body {
         }
         @media screen and (max-width: 768px) {
           .prop-title {
-            display:block;
+            display: block;
           }
         }
 
         .pros-and-cons-container {
           display: flex;
           overflow-x: scroll;
+
           .card-container {
             width: calc(280px * 2);
             display: flex;
@@ -265,6 +305,14 @@ body {
                 border: none;
               }
 
+              button:hover {
+                color:$mid-grey !important; // not working
+              }
+
+              button:focus {
+                outline: 5px auto $light-grey !important; // not working
+              }
+
               .prop-voted {
                 // add fade in animation for when we implement axios.
                 background-color: $green;
@@ -272,7 +320,7 @@ body {
             }
 
             .card.card__pros {
-              border: 2px solid $light-grey;
+              border: 2px solid $mid-grey;
 
               .card-header {
                 text-align: right;
@@ -286,7 +334,7 @@ body {
             }
 
             .card.card__cons {
-              border: 2px solid $light-grey;
+              border: 2px solid $mid-grey;
 
               .card-header {
                 text-align: left;
@@ -303,10 +351,13 @@ body {
           @media (min-width: 768px) {
             .card-container {
               width: calc(350px * 2);
+
               .card {
                 width: 350px;
               }
-              .card.card__pros, .card.card__cons {
+
+              .card.card__cons,
+              .card.card__pros {
                 .card-header {
                   text-align: center;
                 }
@@ -317,6 +368,7 @@ body {
           @media (min-width: 992px) {
             .card-container {
               width: calc(420px * 2);
+
               .card {
                 width: 450px;
               }
@@ -328,13 +380,30 @@ body {
   }
 }
 
-// temp solution, doesn't work on index screen so i only display it on login and signup for now.
+body,
+html {
+  // 3 below lines are necessary for footer to stay at bottom, among other things
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+#wrapper {
+  min-height:100%;
+  height: auto !important;
+  height: 100%;
+  display:flex;
+  flex-direction:column;
+  justify-content: space-between;
+  // margin: 0 auto -6em;
+}
+
 footer {
-  position: absolute;
+  // position: absolute;
   width: 100%;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  // right: 0;
+  // bottom: 0;
+  // left: 0;
   font-family: 'IBM Plex Sans', sans-serif;
   padding-top: 1.2em;
   font-size: 1.2em;
@@ -342,7 +411,31 @@ footer {
   height: 6em;
   background-color: $black;
   color: white;
+
   .credits {
     font-family: monospace;
+    color: $mid-grey;
+  }
+}
+
+.padding-container {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  margin-top:5em;
+  // display:flex;
+  // padding:20%;
+  padding:4.5em 10%;
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items:center;
+
+  @media screen and (max-width: 768px) {
+    padding:2.5em 2em;
+  }
+  @media screen and (max-width: 320px) {
+    padding: 2em 0.5em;
   }
 }
