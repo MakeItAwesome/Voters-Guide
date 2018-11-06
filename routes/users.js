@@ -4,39 +4,6 @@ const User = require('../models/user');
 const Proposition = require('../models/proposition');
 const auth = require('./helpers/auth');
 
-/* SHOW Users votes. */
-router.get('/friend/:codeName', function(req, res, next) {
-  console.log(req.params);
-  User.findOne({
-      codeName: req.params.codeName
-    })
-    .exec(function(err, userWithCodeName) {
-      if (err) {
-        return next(err)
-      } else if (userWithCodeName) {
-        console.log(userWithCodeName);
-        Proposition.find({}, function(err, props) {
-          if (err) {
-            console.error(err);
-          } else {
-            res.render('index', {
-              props: props,
-              user: userWithCodeName
-            });
-          }
-        })
-      } else if (!userWithCodeName) {
-        Proposition.find({}, function(err, props) {
-          if (err) {
-            console.error(err);
-          } else {
-            res.send('No user goes by: ' + req.params.codeName);
-          }
-        })
-      }
-    });
-});
-
 // GET signup
 router.get('/signup', (req, res, next) => {
   res.render('users/signup');
@@ -85,78 +52,144 @@ router.get('/logout', (req, res, next) => {
   return res.redirect('/');
 });
 
-// POST/CREATE NEW prop
+// POST/SAVE NEW prop
 router.post('/save-vote', auth.requireLogin, function(req, res, next) {
-  if (req.body.yesVote !== undefined) { // user voted yes
-    console.log('clicked yes');
-    User.findByIdAndUpdate(
-      res.locals.user._id, {
-        $addToSet: {
-          arrayOfYesVotes: req.body.yesVote
+  console.log(req.body);
+  // console.log(res.locals.user);
+  // console.log(req.body);
+  if (req.body.yesVote) {
+    console.log('undo YES vote');
+    if (res.locals.user.arrayOfYesVotes.includes(req.body.yesVote)) {
+      User.findByIdAndUpdate(
+        res.locals.user._id, {
+          $pull: {
+            arrayOfYesVotes: req.body.yesVote
+          }
         },
-        $pull: {
-          arrayOfNoVotes: req.body.yesVote
-        }
-      },
-      function(err, vote) {
-        if (err) {
-          console.error(err)
-        };
-        res.locals.user.arrayOfYesVotes.push(req.body.yesVote); // so it updates on client side
-        res.locals.user.arrayOfNoVotes.pop(req.body.yesVote);
-        res.redirect('/');
-        // res.end();
-      });
-  } else if (req.body.noVote !== undefined) { // user voted no
-    console.log('clicked no');
-    User.findByIdAndUpdate(
-      res.locals.user._id, {
-        $addToSet: {
-          arrayOfNoVotes: req.body.noVote
+        function(err) {
+          if (err) {
+            console.error(err)
+          };
+          res.locals.user.arrayOfYesVotes.pop(req.body.yesVote); // so it updates on client side
+        });
+    } else {
+      console.log('save YES vote');
+      User.findByIdAndUpdate(
+        res.locals.user._id, {
+          $addToSet: {
+            arrayOfYesVotes: req.body.yesVote
+          },
+          $pull: {
+            arrayOfNoVotes: req.body.yesVote
+          }
         },
-        $pull: {
-          arrayOfYesVotes: req.body.noVote
-        }
-      },
-      function(err, vote) {
-        if (err) {
-          console.error(err)
-        };
-        res.locals.user.arrayOfNoVotes.push(req.body.noVote); // so it updates on client side
-        res.locals.user.arrayOfYesVotes.pop(req.body.noVote);
-        res.redirect('/');
-      });
-  } else if (req.body.undoYesVote !== undefined) { // user undid yes vote
-    console.log('clicked undo yes');
-    User.findByIdAndUpdate(
-      res.locals.user._id, {
-        $pull: {
-          arrayOfNoVotes: req.body.undoYesVote
-        }
-      },
-      function(err, vote) {
-        if (err) {
-          console.error(err)
-        };
-        res.locals.user.arrayOfYesVotes.pop(req.body.undoYesVote); // so it updates on client side
-        res.redirect('/');
-      });
-  } else if (req.body.undoNoVote !== undefined) { // user undid yes vote
-    console.log('clicked undo no');
-    User.findByIdAndUpdate(
-      res.locals.user._id, {
-        $pull: {
-          arrayOfNoVotes: req.body.undoNoVote
-        }
-      },
-      function(err, vote) {
-        if (err) {
-          console.error(err)
-        };
-        res.locals.user.arrayOfNoVotes.pop(req.body.undoNoVote); // so it updates on client side
-        res.redirect('/');
-      });
+        function(err) {
+          if (err) {
+            console.error(err)
+          };
+          res.locals.user.arrayOfYesVotes.push(req.body.yesVote); // so it updates on client side
+          res.locals.user.arrayOfNoVotes.pop(req.body.yesVote);
+        });
+    }
+  } else if (req.body.noVote) {
+    console.log("clicked on button below NO");
+    if (res.locals.user.arrayOfNoVotes.includes(req.body.noVote)) {
+      console.log('undo NO vote');
+      User.findByIdAndUpdate(
+        res.locals.user._id, {
+          $pull: {
+            arrayOfNoVotes: req.body.noVote
+          }
+        },
+        function(err) {
+          if (err) {
+            console.error(err)
+          };
+          res.locals.user.arrayOfNoVotes.pop(req.body.noVote); // so it updates on client side
+        });
+    } else {
+      console.log('save NO vote');
+
+      User.findByIdAndUpdate(
+        res.locals.user._id, {
+          $addToSet: {
+            arrayOfNoVotes: req.body.noVote
+          },
+          $pull: {
+            arrayOfYesVotes: req.body.noVote
+          }
+        },
+        function(err) {
+          if (err) {
+            console.error(err)
+          };
+          res.locals.user.arrayOfNoVotes.push(req.body.noVote); // so it updates on client side
+          res.locals.user.arrayOfYesVotes.pop(req.body.noVote);
+        });
+    }
   }
+  Proposition.find({}, function(err, props) {
+    if (err) {
+      console.error(err);
+    } else {
+      User.findById(res.locals.user._id, function (err, user) {
+        // res.render('index', {
+        //   props: props,
+        //   user: user
+        // });
+        res.redirect('/');
+      });
+    }
+  })
+});
+
+/* SHOW Users votes. */
+router.get('/friend/:codeName', function(req, res, next) {
+  console.log(req.params);
+  User.findOne({
+      codeName: req.params.codeName
+    })
+    .exec(function(err, userWithCodeName) {
+      if (err) {
+        return next(err)
+      } else if (userWithCodeName) {
+        console.log(userWithCodeName);
+        Proposition.find({}, function(err, props) {
+          if (err) {
+            console.error(err);
+          } else {
+            res.render('profile', {
+              props: props,
+              user: userWithCodeName
+            });
+          }
+        })
+      } else if (!userWithCodeName) {
+        Proposition.find({}, function(err, props) {
+          if (err) {
+            console.error(err);
+          } else {
+            res.send('No user goes by: ' + req.params.codeName);
+          }
+        })
+      }
+    });
+});
+
+router.post('/toggle-privacy', function(req, res, next) {
+  console.log(req.body);
+  User.findByIdAndUpdate(
+    res.locals.user._id, {
+      $set: {
+        profilePublic: req.body.profilePublic
+      }
+    },
+    function(err) {
+      if (err) {
+        console.error(err)
+      };
+      res.locals.user.profilePublic = req.body.profilePublic; // to update user side
+    });
 });
 
 module.exports = router;

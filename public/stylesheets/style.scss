@@ -7,48 +7,130 @@ a {
 body {
   font-family: 'IBM Plex Sans', sans-serif;
   background-color: $mid-grey;
+
   nav {
     background-color: $black;
+
     .navbar-brand a {
       font-weight: 800;
       letter-spacing: 1.5px;
     }
+
     .navbar-nav a {
       color: $dark-grey;
     }
-    a:hover, .navbar-nav a:hover {
+
+    .navbar-nav a:hover,
+    a:hover {
       color: $mid-grey;
     }
+
+    .collapse {
+      justify-content: flex-end;
+    }
   }
+
   .container {
-    padding: 0px;
-    margin-top:2em;
+    padding: 0;
+    margin-top: 2em;
+
     .top {
       text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      h1,p {
+
+      h1,
+      p {
         color: $black;
       }
+
       h1 {
         font-size: 3em;
         font-weight: 800;
       }
+
       p {
-        padding: 0px 8px;
+        padding: 0 8px;
         font-size: 0.93rem;
-        margin-bottom: .8rem;
+        margin-bottom: 0.8rem;
       }
-      .profile-toggle {
-        margin-bottom: 1em;
+
+      .subheader-description {
+        max-width:800px;
       }
+
+      .profile-settings {
+        // border: 2px solid $light-grey;
+      }
+
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #aaa;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+
+      input:checked + .slider {
+        background-color: $green;
+      }
+
+      input:focus + .slider {
+        box-shadow: 0 0 1px $dark-grey;
+      }
+
+      input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+      }
+      /* Rounded sliders */
+      .slider.round {
+        border-radius: 34px;
+      }
+
+      .slider.round:before {
+        border-radius: 50%;
+      }
+
       .copy-section {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 1em 0em 0em 0em;
+        margin: 1em 0 0;
+        min-width: 300px;
+        max-width: 450px;
+        width: 40%;
+
+        #code-name {
+          width: 100%;
+        }
+
         .copy-btn {
           border-radius: 0.2em;
           background-color: $black;
@@ -56,22 +138,22 @@ body {
           border: none;
           letter-spacing: 1px;
           padding: 4px 20px;
-          -webkit-transition: background-color .5s ease-out;
-          -moz-transition: background-color .5s ease-out;
-          -o-transition: background-color .5s ease-out;
-          transition: background-color .5s ease-out;
         }
+
         .copy-btn:hover {
           background-color: $green;
         }
       }
     }
+
     .all-props-container {
       max-width: 960px; // so cards don't get different widths
       margin-left: auto; // to center
       margin-right: auto; // to center
+
       .card-deck {
         justify-content: center;
+
         .prop-title {
           font-size: 1.2em;
           color: $black;
@@ -79,94 +161,100 @@ body {
           width: 100%;
           display: block;
           align-items: center;
-          margin-top:1em;
-          margin-bottom:0.5em;
+          margin-top: 1em;
+          margin-bottom: 0.5em;
           // Proposition Header
           h3 {
             font-size: 1.0em;
             font-weight: 600;
             line-height: 1em;
-            padding: 0px;
-            margin: 0em .5em;
+            padding: 0;
+            margin: 0 0.5em;
           }
           // Read More
-          a { font-size: .9em; }
-          .source-link { color: $light-grey; }
-          .source-link:hover { color: white; }
+          a {
+            font-size: 0.9em;
+          }
+
+          .source-link {
+            color: $light-grey;
+          }
+
+          .source-link:hover {
+            color: white;
+          }
         }
+
         .pros-and-cons-container {
-          display:flex;
+          display: flex;
           overflow-x: scroll;
+
           .card-container {
             width: calc(280px * 2);
             display: flex;
+
             .card {
               width: 280px;
               box-shadow: 0 2px 9px 0 rgba(0,0,0,.3);
+
               .card-header {
-                padding: .5rem .5rem;
-                font-size: .9em;
+                padding: 0.5rem;
+                font-size: 0.9em;
               }
+
               .card-body {
                 ul {
                   // less padding to left of bullet
-                  padding: .1em .2em .1em 1.3em;
-                  margin: 5px 0px 5px 0px;
+                  padding: 0.1em 0.2em 0.1em 1.3em;
+                  margin: 5px 0;
                 }
               }
+
               button {
                 text-align: center;
                 background-color: $black;
-                color:white;
-                padding: .4em .25em;
+                color: white;
+                padding: 0.4em 0.25em;
                 width: 100%;
+                border:none;
               }
+
               .prop-voted {
                 // add fade in animation for when we implement axios.
                 background-color: $green;
               }
             }
+
             .card.card__pros {
               border: 2px solid $light-grey;
+
               .card-header {
-                text-align: right;
+                text-align: center;
                 padding-right: 1em;
               }
+
               .card-body {
                 // no padding on the right side
-                padding: .25em .0em .25em .25em;
+                padding: 0.5em;
               }
             }
+
             .card.card__cons {
               border: 2px solid $light-grey;
+
               .card-header {
-                text-align: left;
+                text-align: center;
                 padding-left: 1em;
               }
+
               .card-body {
                 // no padding on the left side
-                padding: .25em .25em .25em 0em;
+                padding: 0.5em;
               }
             }
-          }
-          // .save-vote {
-          //   text-align: center;
-          //   background-color: $black;
-          //   color:white;
-          // }
-          // .save-vote:hover {
-          //   background-color: white;
-          //   color: $black;
-          // }
-          .voting-panel {
-            // width:100%;
-            // display:flex;
-            // justify-content: center;
-            // margin: auto;
           }
         }
       }
     }
   }
-  
 }

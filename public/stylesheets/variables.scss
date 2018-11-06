@@ -4,3 +4,10 @@ $mid-grey: #cac9c8;
 $dark-grey: #F5F5F5;
 $green: #5cb85c;
 $red: #d9534f;
+
+.anim-hov-fast {
+  -webkit-transition: background-color .5s ease-out;
+  -moz-transition: background-color .5s ease-out;
+  -o-transition: background-color .5s ease-out;
+  transition: background-color .5s ease-out;
+}
