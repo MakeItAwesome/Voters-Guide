@@ -19,12 +19,15 @@
         <button class="copy-btn anim-hov-fast" onClick="copyText('code-name')">Copy</button>
       </div>
     </div>
+  {{else}}
+    <a href="/signup"><button class="btn btn-dark" type="button">Signup to save votes</button></a>
   {{/if}}
 </div>
 {{> props}}
 <script src="/js/props.js"></script>
 <script>
   var privacyToggle = document.getElementById("privacyToggle");
+
   privacyToggle.addEventListener("click", function() {
     if (privacyToggle.checked == true) {
       document.getElementById('copy-section').style.display = "";
