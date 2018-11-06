@@ -267,7 +267,7 @@ body .container .all-props-container .card-deck .pros-and-cons-container .card-c
 }
 @media (min-width: 992px) {
   body .container .all-props-container .card-deck .pros-and-cons-container .card-container {
-    width: calc(450px * 2);
+    width: calc(420px * 2);
   }
   body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card {
     width: 450px;
