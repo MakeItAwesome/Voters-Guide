@@ -132,11 +132,12 @@ router.post('/save-vote', auth.requireLogin, function(req, res, next) {
     if (err) {
       console.error(err);
     } else {
-      User.findById(res.locals.user._id, function (err, updatedUser) {
-        res.render('index', {
-          props: props,
-          user: updatedUser
-        });
+      User.findById(res.locals.user._id, function (err, user) {
+        // res.render('index', {
+        //   props: props,
+        //   user: user
+        // });
+        res.redirect('/');
       });
     }
   })

@@ -57,6 +57,14 @@ body {
         margin-bottom: 0.8rem;
       }
 
+      .subheader-description {
+        max-width:800px;
+      }
+
+      .profile-settings {
+        // border: 2px solid $light-grey;
+      }
+
       .switch {
         position: relative;
         display: inline-block;
@@ -120,8 +128,9 @@ body {
         width: 40%;
 
         #code-name {
-          width:100%;
+          width: 100%;
         }
+
         .copy-btn {
           border-radius: 0.2em;
           background-color: $black;
@@ -207,6 +216,7 @@ body {
                 color: white;
                 padding: 0.4em 0.25em;
                 width: 100%;
+                border:none;
               }
 
               .prop-voted {
@@ -219,13 +229,13 @@ body {
               border: 2px solid $light-grey;
 
               .card-header {
-                text-align: right;
+                text-align: center;
                 padding-right: 1em;
               }
 
               .card-body {
                 // no padding on the right side
-                padding: 0.25em 0.0em 0.25em 0.25em;
+                padding: 0.5em;
               }
             }
 
@@ -233,13 +243,13 @@ body {
               border: 2px solid $light-grey;
 
               .card-header {
-                text-align: left;
+                text-align: center;
                 padding-left: 1em;
               }
 
               .card-body {
                 // no padding on the left side
-                padding: 0.25em 0.25em 0.25em 0;
+                padding: 0.5em;
               }
             }
           }

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const auth = require('./helpers/auth');
-
+const User = require('../models/user');
 const Proposition = require('../models/proposition');
 
 // set layout variables
@@ -15,13 +15,23 @@ router.use(function(req, res, next) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  // console.log(req);
   Proposition.find({}, function(err, props) {
     if (err) {
       console.error(err);
     } else {
-      res.render('index', {
-        props: props
-      });
+      if (res.locals.user) {
+        User.findById(res.locals.user._id, function (err, user) {
+          res.render('index', {
+            props: props,
+            user: user
+          });
+        });
+      } else {
+        res.render('index', {
+          props: props
+        });
+      }
     }
   })
 });
