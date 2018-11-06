@@ -24,17 +24,17 @@
             {{#if @root.user}}
               {{#contains @root.user.arrayOfYesVotes prop.id}}
                 <button class="save-vote-link prop-voted" name="yesVote" value="{{prop.id}}" id="{{prop.id}}-yes" onClick="undoYesVote('{{prop.id}}')">
-                   Undo Vote
+                   Undo <strong>YES</strong>
                 </button>
               {{else}}
                 <button class="save-vote-link" name="yesVote" value="{{prop.id}}" id="{{prop.id}}-yes" onClick="saveYesVote('{{prop.id}}')">
-                   Save Vote
+                   Vote <strong>YES</strong>
                 </button>
               {{/contains}}
             {{else}}
               <a href="/signup">
                 <button class="save-vote-link">
-                   Save Vote
+                   Vote <strong>YES</strong>
                 </button>
               </a>
             {{/if}}
@@ -56,17 +56,17 @@
             {{#if @root.user}}
               {{#contains @root.user.arrayOfNoVotes prop.id}}
                 <button class="save-vote-link prop-voted" name="noVote" value="{{prop.id}}" id="{{prop.id}}-no" onClick="undoNoVote('{{prop.id}}')">
-                   Undo Vote
+                   Undo <strong>NO</strong>
                 </button>
               {{else}}
                 <button class="save-vote-link" name="noVote" value="{{prop.id}}" id="{{prop.id}}-no" onClick="saveNoVote('{{prop.id}}')">
-                   Save Vote
+                   Vote <strong>NO</strong>
                 </button>
               {{/contains}}
             {{else}}
               <a href="/signup">
                 <button class="save-vote-link">
-                   Save Vote
+                   Vote <strong>NO</strong>
                 </button>
               </a>
             {{/if}}
