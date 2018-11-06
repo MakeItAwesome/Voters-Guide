@@ -1,191 +1,277 @@
 .anim-hov-fast {
-  -webkit-transition: background-color .5s ease-out;
-  -moz-transition: background-color .5s ease-out;
-  -o-transition: background-color .5s ease-out;
-  transition: background-color .5s ease-out; }
+  -webkit-transition: background-color 0.5s ease-out;
+  -moz-transition: background-color 0.5s ease-out;
+  -o-transition: background-color 0.5s ease-out;
+  transition: background-color 0.5s ease-out;
+}
 
 a {
-  color: #F5F5F5; }
+  color: #F5F5F5;
+}
 
 body {
-  font-family: 'IBM Plex Sans', sans-serif;
-  background-color: #cac9c8; }
-  body nav {
-    background-color: #1C1C1C; }
-    body nav .navbar-brand a {
-      font-weight: 800;
-      letter-spacing: 1.5px; }
-    body nav .navbar-nav a {
-      color: #F5F5F5; }
-    body nav .navbar-nav a:hover,
-    body nav a:hover {
-      color: #cac9c8; }
-    body nav .collapse {
-      justify-content: flex-end; }
-  body .container {
-    padding: 0;
-    margin-top: 2em; }
-    body .container .top {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      /* Rounded sliders */ }
-      body .container .top h1,
-      body .container .top p {
-        color: #1C1C1C; }
-      body .container .top h1 {
-        font-size: 3em;
-        font-weight: 800; }
-      body .container .top p {
-        padding: 0 8px;
-        font-size: 0.93rem;
-        margin-bottom: 1.5rem; }
-      body .container .top .subheader-description {
-        max-width: 800px; }
-      body .container .top .switch {
-        position: relative;
-        display: inline-block;
-        width: 60px;
-        height: 34px; }
-      body .container .top .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #aaa;
-        -webkit-transition: 0.4s;
-        transition: 0.4s; }
-      body .container .top .slider:before {
-        position: absolute;
-        content: "";
-        height: 26px;
-        width: 26px;
-        left: 4px;
-        bottom: 4px;
-        background-color: white;
-        -webkit-transition: 0.4s;
-        transition: 0.4s; }
-      body .container .top input:checked + .slider {
-        background-color: #5cb85c; }
-      body .container .top input:focus + .slider {
-        box-shadow: 0 0 1px #F5F5F5; }
-      body .container .top input:checked + .slider:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px); }
-      body .container .top .slider.round {
-        border-radius: 34px; }
-      body .container .top .slider.round:before {
-        border-radius: 50%; }
-      body .container .top .copy-section {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: .5em 0 0;
-        min-width: 300px;
-        max-width: 450px;
-        width: 40%; }
-        body .container .top .copy-section #code-name {
-          width: 100%; }
-        body .container .top .copy-section .copy-btn {
-          border-radius: 0.2em;
-          background-color: #1C1C1C;
-          color: #F5F5F5;
-          border: none;
-          letter-spacing: 1px;
-          padding: 4px 20px; }
-        body .container .top .copy-section .copy-btn:hover {
-          background-color: #5cb85c; }
-      body .container .top .signup-btn {
-        background-color: #1C1C1C;
-        color: #ffffff; }
-      @media (min-width: 768px) {
-        body .container .top .switch {
-          width: 80px; }
-        body .container .top input:checked + .slider:before {
-          -webkit-transform: translateX(46px);
-          -ms-transform: translateX(46px);
-          transform: translateX(46px); } }
-    body .container .all-props-container {
-      max-width: 960px;
-      margin-left: auto;
-      margin-right: auto; }
-      body .container .all-props-container .card-deck {
-        justify-content: center; }
-        body .container .all-props-container .card-deck .prop-title {
-          font-size: 1.2em;
-          color: #1C1C1C;
-          text-align: center;
-          width: 100%;
-          display: block;
-          align-items: center;
-          margin-top: 1em;
-          margin-bottom: 0.5em; }
-          body .container .all-props-container .card-deck .prop-title h3 {
-            font-size: 1.0em;
-            font-weight: 600;
-            line-height: 1em;
-            padding: 0;
-            margin: 0 0.5em; }
-          body .container .all-props-container .card-deck .prop-title a {
-            font-size: 0.9em; }
-          body .container .all-props-container .card-deck .prop-title .source-link {
-            color: #636e72; }
-          body .container .all-props-container .card-deck .prop-title .source-link:hover {
-            color: white; }
-        body .container .all-props-container .card-deck .pros-and-cons-container {
-          display: flex;
-          overflow-x: scroll; }
-          body .container .all-props-container .card-deck .pros-and-cons-container .card-container {
-            width: calc(280px * 2);
-            display: flex; }
-            body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card {
-              width: 280px;
-              box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.3); }
-              body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card .card-header {
-                padding: 0.5rem;
-                font-size: 0.9em; }
-              body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card .card-body ul {
-                padding: 0.1em 0.2em 0.1em 1.3em;
-                margin: 5px 0; }
-              body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card button {
-                text-align: center;
-                background-color: #1C1C1C;
-                color: white;
-                padding: 0.4em 0.25em;
-                width: 100%;
-                border: none; }
-              body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card .prop-voted {
-                background-color: #5cb85c; }
-            body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__pros {
-              border: 2px solid #636e72; }
-              body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__pros .card-header {
-                text-align: right;
-                padding-right: 1em; }
-              body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__pros .card-body {
-                padding: 0.5em; }
-            body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__cons {
-              border: 2px solid #636e72; }
-              body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__cons .card-header {
-                text-align: left;
-                padding-left: 1em; }
-              body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__cons .card-body {
-                padding: 0.5em; }
-          @media (min-width: 768px) {
-            body .container .all-props-container .card-deck .pros-and-cons-container .card-container {
-              width: calc(350px * 2); }
-              body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card {
-                width: 350px; }
-              body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__pros .card-header, body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__cons .card-header {
-                text-align: center; } }
-          @media (min-width: 992px) {
-            body .container .all-props-container .card-deck .pros-and-cons-container .card-container {
-              width: calc(450px * 2); }
-              body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card {
-                width: 450px; } }
+  font-family: "IBM Plex Sans", sans-serif;
+  background-color: #cac9c8;
+}
+body nav {
+  background-color: #1C1C1C;
+}
+body nav .navbar-brand a {
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+body nav .navbar-nav a {
+  color: #F5F5F5;
+}
+body nav .navbar-nav a:hover,
+body nav a:hover {
+  color: #cac9c8;
+}
+body nav .collapse {
+  justify-content: flex-end;
+}
+body .container {
+  padding: 0;
+  margin-top: 2em;
+}
+body .container .top {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* Rounded sliders */
+}
+body .container .top h1,
+body .container .top p {
+  color: #1C1C1C;
+}
+body .container .top h1 {
+  font-size: 3em;
+  font-weight: 800;
+}
+body .container .top p {
+  padding: 0 8px;
+  font-size: 0.93rem;
+  margin-bottom: 1.5rem;
+}
+body .container .top hr {
+  width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.2) !important;
+  margin-bottom: 1.5em;
+}
+body .container .top .subheader-description {
+  max-width: 800px;
+}
+body .container .top .profile-settings {
+  margin-bottom: 1.5em;
+}
+body .container .top .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+body .container .top .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #aaa;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+body .container .top .slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+body .container .top input:checked + .slider {
+  background-color: #5cb85c;
+}
+body .container .top input:focus + .slider {
+  box-shadow: 0 0 1px #F5F5F5;
+}
+body .container .top input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+body .container .top .slider.round {
+  border-radius: 34px;
+}
+body .container .top .slider.round:before {
+  border-radius: 50%;
+}
+body .container .top .toggle-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .container .top .privacy-text {
+  margin: 0;
+}
+body .container .top .switch {
+  margin: 0;
+}
+body .container .top .copy-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1em 0 0;
+  min-width: 350px;
+}
+@media screen and (max-width: 320px) {
+  body .container .top .copy-section .copy-section {
+    width: 300px;
+    float: none;
+  }
+}
+body .container .top .copy-section #code-name {
+  width: 100%;
+}
+body .container .top .copy-section .copy-btn {
+  border-radius: 0.2em;
+  background-color: #1C1C1C;
+  color: #F5F5F5;
+  border: none;
+  letter-spacing: 1px;
+  padding: 4px 20px;
+}
+body .container .top .copy-section .copy-btn:hover {
+  background-color: #5cb85c;
+}
+body .container .top .signup-btn {
+  background-color: #1C1C1C;
+  color: #ffffff;
+}
+@media (min-width: 768px) {
+  body .container .top .switch {
+    width: 80px;
+  }
+  body .container .top input:checked + .slider:before {
+    -webkit-transform: translateX(46px);
+    -ms-transform: translateX(46px);
+    transform: translateX(46px);
+  }
+}
+body .container .all-props-container {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+body .container .all-props-container .card-deck {
+  justify-content: center;
+}
+body .container .all-props-container .card-deck .prop-title {
+  font-size: 1.2em;
+  color: #1C1C1C;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+body .container .all-props-container .card-deck .prop-title h3 {
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 1em;
+  padding: 0;
+  margin: 0 0.5em;
+}
+body .container .all-props-container .card-deck .prop-title a {
+  font-size: 0.9em;
+}
+body .container .all-props-container .card-deck .prop-title .source-link {
+  color: #636e72;
+}
+body .container .all-props-container .card-deck .prop-title .source-link:hover {
+  color: white;
+}
+@media screen and (max-width: 768px) {
+  body .container .all-props-container .card-deck .prop-title {
+    display: block;
+  }
+}
+body .container .all-props-container .card-deck .pros-and-cons-container {
+  display: flex;
+  overflow-x: scroll;
+}
+body .container .all-props-container .card-deck .pros-and-cons-container .card-container {
+  width: calc(280px * 2);
+  display: flex;
+}
+body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card {
+  width: 280px;
+  box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.3);
+}
+body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card .card-header {
+  padding: 0.5rem;
+  font-size: 0.9em;
+}
+body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card .card-body ul {
+  padding: 0.1em 0.2em 0.1em 1.3em;
+  margin: 5px 0;
+}
+body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card button {
+  text-align: center;
+  background-color: #1C1C1C;
+  color: white;
+  padding: 0.4em 0.25em;
+  width: 100%;
+  border: none;
+}
+body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card .prop-voted {
+  background-color: #5cb85c;
+}
+body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__pros {
+  border: 2px solid #636e72;
+}
+body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__pros .card-header {
+  text-align: right;
+  padding-right: 1em;
+}
+body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__pros .card-body {
+  padding: 0.5em;
+}
+body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__cons {
+  border: 2px solid #636e72;
+}
+body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__cons .card-header {
+  text-align: left;
+  padding-left: 1em;
+}
+body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__cons .card-body {
+  padding: 0.5em;
+}
+@media (min-width: 768px) {
+  body .container .all-props-container .card-deck .pros-and-cons-container .card-container {
+    width: calc(350px * 2);
+  }
+  body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card {
+    width: 350px;
+  }
+  body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__pros .card-header, body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card.card__cons .card-header {
+    text-align: center;
+  }
+}
+@media (min-width: 992px) {
+  body .container .all-props-container .card-deck .pros-and-cons-container .card-container {
+    width: calc(420px * 2);
+  }
+  body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card {
+    width: 450px;
+  }
+}
 
 /*# sourceMappingURL=style.css.map */

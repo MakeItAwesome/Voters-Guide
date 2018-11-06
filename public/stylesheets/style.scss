@@ -57,11 +57,18 @@ body {
         margin-bottom: 1.5rem;
       }
 
+      hr {
+        width:100%;
+        border-top: 1px solid rgba(0,0,0,0.2) !important;
+        margin-bottom:1.5em;
+      }
+
       .subheader-description {
-        max-width:800px;
+        max-width: 800px;
       }
 
       .profile-settings {
+        margin-bottom:1.5em;
         // border: 2px solid $light-grey;
       }
 
@@ -118,14 +125,33 @@ body {
         border-radius: 50%;
       }
 
+      .toggle-profile {
+        display:flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .privacy-text {
+        margin:0;
+      }
+
+      .switch {
+        margin:0;
+      }
+
       .copy-section {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: .5em 0 0;
-        min-width: 300px;
-        max-width: 450px;
-        width: 40%;
+        margin: 1em 0 0;
+        min-width: 350px;
+
+        @media screen and (max-width: 320px) {
+          .copy-section {
+            width: 300px;
+            float: none;
+          }
+        }
 
         #code-name {
           width: 100%;
@@ -148,7 +174,7 @@ body {
         background-color: $black;
         color: #ffffff;
       }
-      @media (min-width: 768px) { 
+      @media (min-width: 768px) {
         .switch {
           width: 80px;
         }
@@ -173,10 +199,12 @@ body {
           color: $black;
           text-align: center;
           width: 100%;
-          display: block;
+          display: flex;
+          justify-content: center;
           align-items: center;
           margin-top: 1em;
           margin-bottom: 0.5em;
+
           // Proposition Header
           h3 {
             font-size: 1.0em;
@@ -196,6 +224,11 @@ body {
 
           .source-link:hover {
             color: white;
+          }
+        }
+        @media screen and (max-width: 768px) {
+          .prop-title {
+            display:block;
           }
         }
 
@@ -229,7 +262,7 @@ body {
                 color: white;
                 padding: 0.4em 0.25em;
                 width: 100%;
-                border:none;
+                border: none;
               }
 
               .prop-voted {
@@ -267,7 +300,7 @@ body {
             }
           }
           // Medium devices (tablets, 768px and up)
-          @media (min-width: 768px) { 
+          @media (min-width: 768px) {
             .card-container {
               width: calc(350px * 2);
               .card {
@@ -281,9 +314,9 @@ body {
             }
           }
           // Large devices (desktops, 992px and up)
-          @media (min-width: 992px) {  
+          @media (min-width: 992px) {
             .card-container {
-              width: calc(450px * 2);
+              width: calc(420px * 2);
               .card {
                 width: 450px;
               }

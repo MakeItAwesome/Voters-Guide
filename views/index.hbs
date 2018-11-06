@@ -1,18 +1,16 @@
 <div class="top">
   <h1 id="title">{{title}}</h1>
-  <h2>For SF Residents</h2>
-  <p class="subheader-description">People are busy. People often skip voting for propositions
-    because they don't know enough about them. We've synthesized the important information below.
-    If you log in, you can save your votes and share them with others.</p>
   {{#if user}}
+    <hr>
+    <h2>Your Saved Votes</h2>
     <div class="profile-settings">
       <div class="toggle-profile">
-        Private
+        <p class="privacy-text">Private</p>
         <label class="switch">
           <input id="privacyToggle" type="checkbox" {{#if user.profilePublic}} checked {{/if}}>
           <span class="slider round"></span>
         </label>
-        Public
+        <p class="privacy-text">Public</p>
       </div>
       <div class="copy-section" id="copy-section" {{#if user.profilePublic}} {{else}} style="display:none" {{/if}}>
         <input type="text" class="code-name" id="code-name" readonly="readonly" value="http://votersguide.co/friend/{{user.codeName}}">
@@ -20,7 +18,11 @@
       </div>
     </div>
   {{else}}
-    <a href="/signup"><button class="btn signup-btn" type="button">Signup to save votes</button></a>
+    <h2>For SF Residents</h2>
+    <p class="subheader-description">People are busy. People often skip voting for propositions
+      because they don't know enough about them. We've synthesized the important information below.
+      If you log in, you can save your votes and share them with others.</p>
+    <a href="/signup"><button class="btn signup-btn" type="button">Sign Up to Save Votes</button></a>
   {{/if}}
 </div>
 {{> props}}
@@ -33,16 +35,16 @@
       document.getElementById('copy-section').style.display = "";
       // axios.post('/toggle-privacy');
       axios.post('/toggle-privacy', {
-          profilePublic: true
+        profilePublic: true
       }).catch(error => {
-          console.error(error);
+        console.error(error);
       });
     } else {
       document.getElementById('copy-section').style.display = "none";
       axios.post('/toggle-privacy', {
-          profilePublic: false
+        profilePublic: false
       }).catch(error => {
-          console.error(error);
+        console.error(error);
       });
     }
   });
