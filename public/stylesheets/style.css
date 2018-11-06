@@ -9,12 +9,22 @@ a {
   color: #F5F5F5;
 }
 
+a:hover {
+  color: #636e72;
+}
+
+button {
+  border-radius: 0.11em;
+}
+
 body {
   font-family: "IBM Plex Sans", sans-serif;
   background-color: #cac9c8;
 }
 body nav {
   background-color: #1C1C1C;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 body nav .navbar-brand a {
   font-weight: 800;
@@ -30,12 +40,6 @@ body nav a:hover {
 }
 body nav .collapse {
   justify-content: flex-end;
-}
-body button {
-  border-radius: 0.11em;
-}
-body button:hover {
-  color: #636e72 !important;
 }
 body .container {
   padding: 0;
@@ -71,7 +75,7 @@ body .container .top p {
   color: #1C1C1C;
 }
 body .container .top h1 {
-  font-size: 3em;
+  font-size: 3.2em;
   font-weight: 800;
 }
 body .container .top p {
@@ -85,6 +89,8 @@ body .container .top hr {
   margin-bottom: 1.5em;
 }
 body .container .top .subheader-description {
+  font-size: 1.2em;
+  margin-top: 1em;
   max-width: 800px;
 }
 body .container .top .profile-settings {
@@ -173,9 +179,16 @@ body .container .top .copy-section .copy-btn {
 body .container .top .copy-section .copy-btn:hover {
   background-color: #5cb85c;
 }
+body .container .top .signup-button-text {
+  max-width: 200px;
+  color: #636e72;
+  font-size: 0.8em;
+  margin-bottom: 0.3em;
+}
 body .container .top .signup-btn {
   background-color: #1C1C1C;
   color: #ffffff;
+  margin-bottom: 1.5em;
 }
 @media (min-width: 768px) {
   body .container .top .switch {
@@ -254,6 +267,12 @@ body .container .all-props-container .card-deck .pros-and-cons-container .card-c
   padding: 0.4em 0.25em;
   width: 100%;
   border: none;
+}
+body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card button:hover {
+  color: #636e72 !important;
+}
+body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card button:focus {
+  outline: 5px auto #cac9c8 !important;
 }
 body .container .all-props-container .card-deck .pros-and-cons-container .card-container .card .prop-voted {
   background-color: #5cb85c;
@@ -344,7 +363,7 @@ footer .credits {
 }
 @media screen and (max-width: 768px) {
   .padding-container {
-    padding: 4em 2em;
+    padding: 2.5em 2em;
   }
 }
 @media screen and (max-width: 320px) {
