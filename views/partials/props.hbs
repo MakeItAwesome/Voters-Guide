@@ -12,7 +12,8 @@
             <div class="card-body">
               {{#each prop.pros as |pro|}}
                 <ul>
-                  {{#if pro}} <!-- trim empty items from "pros" array -->
+                  {{#if pro}}
+                    <!-- trim empty items from "pros" array -->
                     <li><span>
                         {{pro}}
                       </span></li>
@@ -20,24 +21,19 @@
                 </ul>
               {{/each}}
             </div>
-            {{#contains @root.user.arrayOfYesVotes prop.id}}
-              <form action="/save-vote" method="post">
-                <input type="hidden" name="undoYesVote" class="form-control" value="{{prop.id}}">
-                <button href="" class="save-vote-link savedVote prop-voted" type="submit">Undo Vote</button>
-              </form> <!-- undo yesVote form -->
-            {{else}}
-              <form action="/save-vote" method="post">
-                <input type="hidden" name="yesVote" class="form-control" value="{{prop.id}}">
-                <button href="" class="save-vote-link" type="submit">Save Vote</button>
-              </form> <!-- save yesVote form -->
-            {{/contains}}
+            <form action="/save-vote" method="post">
+              <button href="" class="save-vote-link {{#contains @root.user.arrayOfYesVotes prop.id}} savedVote prop-voted {{/contains}}" type="submit" name="yesVote" value="{{prop.id}}">
+                {{#contains @root.user.arrayOfYesVotes prop.id}} Undo {{else}} Save {{/contains}} Vote
+              </button>
+            </form> <!-- yes vote form -->
           </div> <!-- pros card container -->
           <div class="card card__cons mb-3">
             <div class="card-header">People <strong>AGAINST</strong> say</div>
             <div class="card-body">
               {{#each prop.cons as |con|}}
                 <ul>
-                  {{#if con}} <!-- trim empty items from "cons" array -->
+                  {{#if con}}
+                    <!-- trim empty items from "cons" array -->
                     <li>
                       {{con}}
                     </li>
@@ -45,17 +41,11 @@
                 </ul>
               {{/each}}
             </div>
-            {{#contains @root.user.arrayOfNoVotes prop.id}}
-              <form action="/save-vote" method="post">
-                <input type="hidden" name="undoNoVote" class="form-control" value="{{prop.id}}">
-                <button href="" class="save-vote-link prop-voted" type="submit">Undo Vote</button>
-              </form> <!-- undo noVote form -->
-            {{else}}
-              <form action="/save-vote" method="post">
-                <input type="hidden" name="noVote" class="form-control" value="{{prop.id}}">
-                <button href="" class="save-vote-link" type="submit">Save Vote</button>
-              </form> <!-- save noVote form -->
-            {{/contains}}
+            <form action="/save-vote" method="post">
+              <button href="" class="save-vote-link {{#contains @root.user.arrayOfNoVotes prop.id}} savedVote prop-voted {{/contains}}" type="submit" name="noVote" value="{{prop.id}}">
+                {{#contains @root.user.arrayOfNoVotes prop.id}} Undo {{else}} Save {{/contains}} Vote
+              </button>
+            </form> <!-- yes vote form -->
           </div> <!-- cons card container -->
         </div> <!-- card container -->
       </div> <!-- pros and cons container -->
@@ -70,5 +60,4 @@
   const cardContainerWidth = $('.card-container').width();
   // start the horizontal scroll in the middle
   $(".pros-and-cons-container").scrollLeft((cardContainerWidth - windowWidth) / 2);
-
 </script>

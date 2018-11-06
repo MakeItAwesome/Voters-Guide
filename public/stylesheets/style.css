@@ -68,7 +68,7 @@ body .container .top .slider {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #aaa;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -105,6 +105,12 @@ body .container .top .copy-section {
   justify-content: center;
   align-items: center;
   margin: 1em 0 0;
+  min-width: 300px;
+  max-width: 450px;
+  width: 40%;
+}
+body .container .top .copy-section #code-name {
+  width: 100%;
 }
 body .container .top .copy-section .copy-btn {
   border-radius: 0.2em;

@@ -71,7 +71,7 @@ body {
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: #ccc;
+        background-color: #aaa;
         -webkit-transition: 0.4s;
         transition: 0.4s;
       }
@@ -115,7 +115,13 @@ body {
         justify-content: center;
         align-items: center;
         margin: 1em 0 0;
+        min-width: 300px;
+        max-width: 450px;
+        width: 40%;
 
+        #code-name {
+          width:100%;
+        }
         .copy-btn {
           border-radius: 0.2em;
           background-color: $black;

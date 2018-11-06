@@ -13,7 +13,7 @@
       Public
     </div>
     <div class="copy-section" id="copy-section" {{#if user.profilePublic}} {{else}} style="display:none" {{/if}}>
-      <input type="text" class="code-name" id="code-name" readonly="readonly" value="{{user.codeName}}">
+      <input type="text" class="code-name" id="code-name" readonly="readonly" value="http://votersguide.co/{{user.codeName}}">
       <button class="copy-btn anim-hov-fast" onClick="copyText('code-name')">Copy</button>
     </div>
   {{/if}}
@@ -23,7 +23,6 @@
 <script>
   var privacyToggle = document.getElementById("privacyToggle");
   privacyToggle.addEventListener("click", function() {
-
     if (privacyToggle.checked == true) {
       document.getElementById('copy-section').style.display = "";
       // axios.post('/toggle-privacy');
@@ -32,7 +31,6 @@
       }).catch(error => {
           console.error(error);
       });
-      // document.getElementById("title").innerHTML = "PUBLIC";
     } else {
       document.getElementById('copy-section').style.display = "none";
       axios.post('/toggle-privacy', {
@@ -40,7 +38,6 @@
       }).catch(error => {
           console.error(error);
       });
-      // document.getElementById("title").innerHTML = "PRIVATE";
     }
   });
 </script>
