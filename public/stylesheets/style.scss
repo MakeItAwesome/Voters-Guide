@@ -327,3 +327,22 @@ body {
     }
   }
 }
+
+// temp solution, doesn't work on index screen so i only display it on login and signup for now.
+footer {
+  position: absolute;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  font-family: 'IBM Plex Sans', sans-serif;
+  padding-top: 1.2em;
+  font-size: 1.2em;
+  text-align: center;
+  height: 6em;
+  background-color: $black;
+  color: white;
+  .credits {
+    font-family: monospace;
+  }
+}
