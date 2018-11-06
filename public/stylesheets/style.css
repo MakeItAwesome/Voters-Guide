@@ -184,7 +184,7 @@ body .container .all-props-container .card-deck .prop-title .source-link {
 body .container .all-props-container .card-deck .prop-title .source-link:hover {
   color: white;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   body .container .all-props-container .card-deck .prop-title {
     display: block;
   }
