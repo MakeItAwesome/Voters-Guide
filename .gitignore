@@ -1,3 +1,7 @@
+# sass
+*node_modules
+style.css.map
+style.css
 
 # Created by https://www.gitignore.io/api/git,node,macos,visualstudio
 
