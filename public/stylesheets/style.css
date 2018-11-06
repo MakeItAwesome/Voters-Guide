@@ -55,8 +55,16 @@ body .container .top p {
   font-size: 0.93rem;
   margin-bottom: 0.8rem;
 }
+body .container .top hr {
+  width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.2) !important;
+  margin-bottom: 1.5em;
+}
 body .container .top .subheader-description {
   max-width: 800px;
+}
+body .container .top .profile-settings {
+  margin-bottom: 1.5em;
 }
 body .container .top .switch {
   position: relative;
@@ -103,14 +111,29 @@ body .container .top .slider.round {
 body .container .top .slider.round:before {
   border-radius: 50%;
 }
+body .container .top .toggle-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .container .top .privacy-text {
+  margin: 0;
+}
+body .container .top .switch {
+  margin: 0;
+}
 body .container .top .copy-section {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 1em 0 0;
-  min-width: 300px;
-  max-width: 450px;
-  width: 40%;
+  min-width: 350px;
+}
+@media screen and (max-width: 320px) {
+  body .container .top .copy-section .copy-section {
+    width: 300px;
+    float: none;
+  }
 }
 body .container .top .copy-section #code-name {
   width: 100%;
@@ -139,7 +162,8 @@ body .container .all-props-container .card-deck .prop-title {
   color: #1C1C1C;
   text-align: center;
   width: 100%;
-  display: block;
+  display: flex;
+  justify-content: center;
   align-items: center;
   margin-top: 1em;
   margin-bottom: 0.5em;
@@ -159,6 +183,11 @@ body .container .all-props-container .card-deck .prop-title .source-link {
 }
 body .container .all-props-container .card-deck .prop-title .source-link:hover {
   color: white;
+}
+@media screen and (max-width: 600px) {
+  body .container .all-props-container .card-deck .prop-title {
+    display: block;
+  }
 }
 body .container .all-props-container .card-deck .pros-and-cons-container {
   display: flex;
