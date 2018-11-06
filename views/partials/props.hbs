@@ -3,7 +3,7 @@
     {{#each props as |prop|}}
       <div class="prop-title" id={{prop._id}}>
         <h3>{{prop.name}}</h3>
-        <a href="{{prop.readMoreUrl}}" target="_blank" class="source-link">(Source: votersedge.org)</a>
+        <a href="{{prop.readMoreUrl}}" target="_blank" class="source-link">(Read More)</a>
       </div>
       <div class="pros-and-cons-container">
         <div class="card-container">
@@ -21,11 +21,17 @@
                 </ul>
               {{/each}}
             </div>
-            <form action="/save-vote" method="post">
-              <button href="" class="save-vote-link {{#contains @root.user.arrayOfYesVotes prop.id}} savedVote prop-voted {{/contains}}" type="submit" name="yesVote" value="{{prop.id}}">
-                {{#contains @root.user.arrayOfYesVotes prop.id}} Undo {{else}} Save {{/contains}} Vote
-              </button>
-            </form> <!-- yes vote form -->
+            {{#if @root.user}}
+              {{#contains @root.user.arrayOfYesVotes prop.id}}
+                <button class="save-vote-link prop-voted" name="yesVote" value="{{prop.id}}" id="{{prop.id}}-yes" onClick="undoYesVote('{{prop.id}}')">
+                   Undo Vote
+                </button>
+              {{else}}
+                <button class="save-vote-link" name="yesVote" value="{{prop.id}}" id="{{prop.id}}-yes" onClick="saveYesVote('{{prop.id}}')">
+                   Save Vote
+                </button>
+              {{/contains}}
+            {{/if}}
           </div> <!-- pros card container -->
           <div class="card card__cons mb-3">
             <div class="card-header">People <strong>AGAINST</strong> say</div>
@@ -41,11 +47,17 @@
                 </ul>
               {{/each}}
             </div>
-            <form action="/save-vote" method="post">
-              <button href="" class="save-vote-link {{#contains @root.user.arrayOfNoVotes prop.id}} savedVote prop-voted {{/contains}}" type="submit" name="noVote" value="{{prop.id}}">
-                {{#contains @root.user.arrayOfNoVotes prop.id}} Undo {{else}} Save {{/contains}} Vote
-              </button>
-            </form> <!-- yes vote form -->
+            {{#if @root.user}}
+              {{#contains @root.user.arrayOfNoVotes prop.id}}
+                <button class="save-vote-link prop-voted" name="noVote" value="{{prop.id}}" id="{{prop.id}}-no" onClick="undoNoVote('{{prop.id}}')">
+                   Undo Vote
+                </button>
+              {{else}}
+                <button class="save-vote-link" name="noVote" value="{{prop.id}}" id="{{prop.id}}-no" onClick="saveNoVote('{{prop.id}}')">
+                   Save Vote
+                </button>
+              {{/contains}}
+            {{/if}}
           </div> <!-- cons card container -->
         </div> <!-- card container -->
       </div> <!-- pros and cons container -->
