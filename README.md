@@ -1,5 +1,5 @@
 # Voters Guide
-[votersguide.co](votersguide.co) - A website that focuses on making voters' choices accessible by design.
+[votersguide.co](http://votersguide.co) - A website that focuses on making voters' choices accessible by design.
 
 ## Technologies
 
