@@ -16,8 +16,8 @@ votersguide.co - A website that focuses on making voters' choices accessible by 
 - [Index](https://github.com/MakeItAwesome/Voters-Guide/blob/master/routes/index.js)
 
 ## Relevant Resources:
-http://ballot.fyi
-http://bythebay.cool
-https://votersedge.org/ca
-https://developers.google.com/civic-information/docs/v2/elections/voterInfoQuery
-https://ballotpedia.org/California_2018_ballot_propositions
+- http://ballot.fyi
+- http://bythebay.cool
+- https://votersedge.org/ca
+- https://developers.google.com/civic-information/docs/v2/elections/voterInfoQuery
+- https://ballotpedia.org/California_2018_ballot_propositions
