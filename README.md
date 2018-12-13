@@ -6,7 +6,9 @@
 ## Milestones
 - [x] **v0:** Users can easily reference PROS and CONS of each prop _for SF only_
 - [x] **v1:** Users can easily save their choices for later (and decide whether their choices are OK to display publicly)
+
 **--Nov 6th, 2018: ELECTIONS HAPPEN--**
+
 - [ ] **v2:**  Add support to other cities and counties + Allow users to follow other users (+clone their endorsements)
 
 ## How to run
