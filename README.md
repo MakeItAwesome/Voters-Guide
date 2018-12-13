@@ -10,10 +10,11 @@
 - [ ] **v2:**  Add support to other cities and counties + Allow users to follow other users (+clone their endorsements)
 
 ## How to run
+
 1- contact us for permission, we will give you the .env variables you need
-1- clone this repo: `git clone`
-1- install required frameworks `npm install`
-1- start server `nodemon`
+2- clone this repo: `git clone`
+3- install required frameworks `npm install`
+4- start server `nodemon`
 
 ## Models
 - [Proposition](/models/proposition.js)
