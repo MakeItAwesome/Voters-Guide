@@ -7,10 +7,13 @@ votersguide.co - A website that focuses on making voters' choices accessible by 
 **--Nov 6th, 2018: ELECTIONS HAPPEN--**
 - [ ] **v2:**  Add support to other cities and counties + Allow users to follow other users (+clone their endorsements)
 
-## Model
-
+## Models
 [Proposition](/models/proposition.js)
 [User](/models/user.js)
+
+## Controllers
+[Users](https://github.com/MakeItAwesome/Voters-Guide/blob/master/routes/users.js)
+[Index](https://github.com/MakeItAwesome/Voters-Guide/blob/master/routes/index.js)
 
 ## Relevant Resources:
 http://ballot.fyi
