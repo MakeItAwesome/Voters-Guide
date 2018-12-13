@@ -2,6 +2,7 @@
 [votersguide.co](http://votersguide.co) - A website that focuses on making voters' choices accessible by design.
 
 ## Technologies
+Node.js, Express, Handlebars, Handlebars-Helpers, Bcrypt, SASS
 
 ## Milestones
 - [x] **v0:** Users can easily reference PROS and CONS of each prop _for SF only_
